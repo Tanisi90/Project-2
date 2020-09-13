@@ -20,23 +20,59 @@ private static final long serialVersionUID = 1L;
 	@Column(name = "slots_id", nullable = false)
 	private int slots_id;
 	
+	
+	@Column(name = "currentFirst")
 	private int currentFirst;
+	
+	@Column(name = "maxFirst")
 	private int maxFirst;
+	
+	@Column(name = "currentSecond")
 	private int currentSecond;
+	
+	@Column(name = "maxSecond")
 	private int maxSecond;
+	
+	@Column(name = "currentThird")
 	private int currentThird;
+	
+	@Column(name = "maxThird")
 	private int maxThird;
+	
+	@Column(name = "currentFourth")
 	private int currentFourth;
+	
+	@Column(name = "maxFourth")
 	private int maxFourth;
+	
+	@Column(name = "currentFifth")
 	private int currentFifth;
+	
+	@Column(name = "maxFifth")
 	private int maxFifth;
+	
+	@Column(name = "currentSixth")
 	private int currentSixth;
+	
+	@Column(name = "maxSixth")
 	private int maxSixth;
+	
+	@Column(name = "currentSeventh")
 	private int currentSeventh;
+	
+	@Column(name = "maxSeventh")
 	private int maxSeventh;
+	
+	@Column(name = "currentEighth")
 	private int currentEighth;
+	
+	@Column(name = "maxEighth")
 	private int maxEighth;
+	
+	@Column(name = "currentNinth")
 	private int currentNinth;
+	
+	@Column(name = "maxNinth")
 	private int maxNinth;
 	
 	

@@ -104,11 +104,11 @@ public class Character implements Serializable {
 	private Race race;
 	
 	@OneToOne
-	@JoinColumn(name = "slots_id", referencedColumnName = "fk_slots_id")
+	@JoinColumn(name = "fk_slots_id", referencedColumnName = "slots_id")
 	private SpellSlots spellSlots;
 	
 	@OneToOne
-	@JoinColumn(name = "curr_id", referencedColumnName = "fk_curr_id")
+	@JoinColumn(name = "fk_curr_id", referencedColumnName = "curr_id")
 	private Currency currency;
 
 	public Character() {

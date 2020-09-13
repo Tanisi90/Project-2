@@ -22,9 +22,22 @@ private static final long serialVersionUID = 1L;
 	@Column(name = "user_id", nullable = false)
 	private int user_id;
 	
+	@Column(name = "username", nullable = false)
 	private String username;
+	
+	@Column(name = "password", nullable = false)
 	private String password;
-	private String name;
+	
+	@Column(name = "first_name", nullable = false)
+	private String first_name;
+	
+	@Column(name = "last_name", nullable = false)
+	private String last_name;
+	
+	@Column(name = "email", nullable = false)
+	private String email;
+	
+	//Still working on this 
 	private List<String> roles;
 	
 	
@@ -33,21 +46,27 @@ private static final long serialVersionUID = 1L;
 	}
 
 
-	public User(String username, String password, String name, List<String> roles) {
+	public User(String username, String password, String first_name, String last_name, String email,
+			List<String> roles) {
 		super();
 		this.username = username;
 		this.password = password;
-		this.name = name;
+		this.first_name = first_name;
+		this.last_name = last_name;
+		this.email = email;
 		this.roles = roles;
 	}
 
 
-	public User(int user_id, String username, String password, String name, List<String> roles) {
+	public User(int user_id, String username, String password, String first_name, String last_name, String email,
+			List<String> roles) {
 		super();
 		this.user_id = user_id;
 		this.username = username;
 		this.password = password;
-		this.name = name;
+		this.first_name = first_name;
+		this.last_name = last_name;
+		this.email = email;
 		this.roles = roles;
 	}
 
@@ -56,7 +75,9 @@ private static final long serialVersionUID = 1L;
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + ((name == null) ? 0 : name.hashCode());
+		result = prime * result + ((email == null) ? 0 : email.hashCode());
+		result = prime * result + ((first_name == null) ? 0 : first_name.hashCode());
+		result = prime * result + ((last_name == null) ? 0 : last_name.hashCode());
 		result = prime * result + ((password == null) ? 0 : password.hashCode());
 		result = prime * result + ((roles == null) ? 0 : roles.hashCode());
 		result = prime * result + user_id;
@@ -74,10 +95,20 @@ private static final long serialVersionUID = 1L;
 		if (getClass() != obj.getClass())
 			return false;
 		User other = (User) obj;
-		if (name == null) {
-			if (other.name != null)
+		if (email == null) {
+			if (other.email != null)
 				return false;
-		} else if (!name.equals(other.name))
+		} else if (!email.equals(other.email))
+			return false;
+		if (first_name == null) {
+			if (other.first_name != null)
+				return false;
+		} else if (!first_name.equals(other.first_name))
+			return false;
+		if (last_name == null) {
+			if (other.last_name != null)
+				return false;
+		} else if (!last_name.equals(other.last_name))
 			return false;
 		if (password == null) {
 			if (other.password != null)
@@ -102,9 +133,12 @@ private static final long serialVersionUID = 1L;
 
 	@Override
 	public String toString() {
-		return "User [user_id=" + user_id + ", username=" + username + ", password=" + password + ", name=" + name
-				+ ", roles=" + roles + "]";
+		return "User [user_id=" + user_id + ", username=" + username + ", password=" + password + ", first_name="
+				+ first_name + ", last_name=" + last_name + ", email=" + email + ", roles=" + roles + "]";
 	}
+
+
+	
 	
 	
 	

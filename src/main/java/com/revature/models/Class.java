@@ -20,8 +20,13 @@ public class Class implements Serializable {
 	@Column(name = "class_id", nullable = false)
 	private int class_id;
 	
-	private String name;
+	@Column(name = "class_name", nullable = false)
+	private String class_name;
+	
+	@Column(name = "level", nullable = false)
 	private int level;
+	
+	//working on this
 	private Dice hitDice;
 	
 	
@@ -30,18 +35,18 @@ public class Class implements Serializable {
 	}
 
 
-	public Class(String name, int level, Dice hitDice) {
+	public Class(String class_name, int level, Dice hitDice) {
 		super();
-		this.name = name;
+		this.class_name = class_name;
 		this.level = level;
 		this.hitDice = hitDice;
 	}
 
 
-	public Class(int class_id, String name, int level, Dice hitDice) {
+	public Class(int class_id, String class_name, int level, Dice hitDice) {
 		super();
 		this.class_id = class_id;
-		this.name = name;
+		this.class_name = class_name;
 		this.level = level;
 		this.hitDice = hitDice;
 	}
@@ -52,9 +57,9 @@ public class Class implements Serializable {
 		final int prime = 31;
 		int result = 1;
 		result = prime * result + class_id;
+		result = prime * result + ((class_name == null) ? 0 : class_name.hashCode());
 		result = prime * result + ((hitDice == null) ? 0 : hitDice.hashCode());
 		result = prime * result + level;
-		result = prime * result + ((name == null) ? 0 : name.hashCode());
 		return result;
 	}
 
@@ -70,6 +75,11 @@ public class Class implements Serializable {
 		Class other = (Class) obj;
 		if (class_id != other.class_id)
 			return false;
+		if (class_name == null) {
+			if (other.class_name != null)
+				return false;
+		} else if (!class_name.equals(other.class_name))
+			return false;
 		if (hitDice == null) {
 			if (other.hitDice != null)
 				return false;
@@ -77,20 +87,17 @@ public class Class implements Serializable {
 			return false;
 		if (level != other.level)
 			return false;
-		if (name == null) {
-			if (other.name != null)
-				return false;
-		} else if (!name.equals(other.name))
-			return false;
 		return true;
 	}
 
 
 	@Override
 	public String toString() {
-		return "Class [class_id=" + class_id + ", name=" + name + ", level=" + level + ", hitDice=" + hitDice + "]";
+		return "Class [class_id=" + class_id + ", class_name=" + class_name + ", level=" + level + ", hitDice="
+				+ hitDice + "]";
 	}
-	
+
+
 	
 	
 	

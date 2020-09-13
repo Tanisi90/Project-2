@@ -20,12 +20,25 @@ public class HitPoints implements Serializable {
 	@Column(name = "hitp_id", nullable = false)
 	private int hitp_id;
 
+	@Column(name = "currentHP", nullable = false)
 	private int currentHP;
+	
+	@Column(name = "maxHP", nullable = false)
 	private int maxHP;
+	
+	@Column(name = "tempHP", nullable = false)
 	private int tempHP;
+	
+	@Column(name = "currentHD", nullable = false)
 	private int currentHD;
+	
+	@Column(name = "maxHD", nullable = false)
 	private int maxHD;
+	
+	@Column(name = "deathSuccesses")
 	private int deathSuccesses;
+	
+	@Column(name = "deathFailures")
 	private int deathFailures;
 	
 	

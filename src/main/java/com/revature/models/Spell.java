@@ -22,14 +22,31 @@ private static final long serialVersionUID = 1L;
 	@Column(name = "spell_id", nullable = false)
 	private int spell_id;
 	
+	@Column(name = "level", nullable = false)
 	private int level;
+	
+	@Column(name = "spell_name", nullable = false)
 	private String spell_name;
+	
+	@Column(name = "school")
 	private String school;
+	
+	@Column(name = "castingTime")
 	private String castingTime;
+	
+	@Column(name = "range")
 	private String range;
+	
+	@Column(name = "material")
 	private String material;
+	
+	@Column(name = "duration")
 	private String duration;
+	
+	@Column(name = "description")
 	private String description;
+	
+	//Still working on figuring this out
 	private List<Character> components;
 	
 	

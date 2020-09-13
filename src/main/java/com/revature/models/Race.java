@@ -4,6 +4,7 @@ import java.io.Serializable;
 import java.util.List;
 
 import javax.persistence.Column;
+import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -22,10 +23,20 @@ private static final long serialVersionUID = 1L;
 	@Column(name = "race_id", nullable = false)
 	private int race_id;
 	
-	private String name;
+	@Column(name = "race_name", nullable = false)
+	private String race_name;
+	
+	@Column(name = "subrace")
 	private String subrace;
+	
+	@Column(name = "size")
 	private String size;
+	
+	@Column(name = "r_description")
 	private String r_description;
+	
+//	@ElementCollection
+//	@Column(name = "features", nullable = false)
 	private List<Feature> features;
 	
 	
@@ -36,9 +47,9 @@ private static final long serialVersionUID = 1L;
 
 
 
-	public Race(String name, String subrace, String size, String r_description, List<Feature> features) {
+	public Race(String race_name, String subrace, String size, String r_description, List<Feature> features) {
 		super();
-		this.name = name;
+		this.race_name = race_name;
 		this.subrace = subrace;
 		this.size = size;
 		this.r_description = r_description;
@@ -47,10 +58,11 @@ private static final long serialVersionUID = 1L;
 
 
 
-	public Race(int race_id, String name, String subrace, String size, String r_description, List<Feature> features) {
+	public Race(int race_id, String race_name, String subrace, String size, String r_description,
+			List<Feature> features) {
 		super();
 		this.race_id = race_id;
-		this.name = name;
+		this.race_name = race_name;
 		this.subrace = subrace;
 		this.size = size;
 		this.r_description = r_description;
@@ -64,9 +76,9 @@ private static final long serialVersionUID = 1L;
 		final int prime = 31;
 		int result = 1;
 		result = prime * result + ((features == null) ? 0 : features.hashCode());
-		result = prime * result + ((name == null) ? 0 : name.hashCode());
 		result = prime * result + ((r_description == null) ? 0 : r_description.hashCode());
 		result = prime * result + race_id;
+		result = prime * result + ((race_name == null) ? 0 : race_name.hashCode());
 		result = prime * result + ((size == null) ? 0 : size.hashCode());
 		result = prime * result + ((subrace == null) ? 0 : subrace.hashCode());
 		return result;
@@ -88,17 +100,17 @@ private static final long serialVersionUID = 1L;
 				return false;
 		} else if (!features.equals(other.features))
 			return false;
-		if (name == null) {
-			if (other.name != null)
-				return false;
-		} else if (!name.equals(other.name))
-			return false;
 		if (r_description == null) {
 			if (other.r_description != null)
 				return false;
 		} else if (!r_description.equals(other.r_description))
 			return false;
 		if (race_id != other.race_id)
+			return false;
+		if (race_name == null) {
+			if (other.race_name != null)
+				return false;
+		} else if (!race_name.equals(other.race_name))
 			return false;
 		if (size == null) {
 			if (other.size != null)
@@ -117,9 +129,17 @@ private static final long serialVersionUID = 1L;
 
 	@Override
 	public String toString() {
-		return "Race [race_id=" + race_id + ", name=" + name + ", subrace=" + subrace + ", size=" + size
+		return "Race [race_id=" + race_id + ", race_name=" + race_name + ", subrace=" + subrace + ", size=" + size
 				+ ", r_description=" + r_description + ", features=" + features + "]";
 	}
+
+
+
+
+
+
+
+
 
 
 

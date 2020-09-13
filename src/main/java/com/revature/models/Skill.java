@@ -21,11 +21,19 @@ private static final long serialVersionUID = 1L;
 	@Column(name = "skill_id", nullable = false)
 	private int skill_id;
 	
+	@Column(name = "skill_name", nullable = false)
+	private String skill_name;
 	
-	private String name;
+	@Column(name = "value", nullable = false)
 	private int value;
-	private Attribute attribute;
+	
+	@Column(name = "proficient", nullable = false)
 	private boolean proficient;
+	
+	
+	//relationship
+	private Attribute attribute;
+
 	
 	
 	
@@ -35,9 +43,9 @@ private static final long serialVersionUID = 1L;
 
 
 
-	public Skill(String name, int value, Attribute attribute, boolean proficient) {
+	public Skill(String skill_name, int value, Attribute attribute, boolean proficient) {
 		super();
-		this.name = name;
+		this.skill_name = skill_name;
 		this.value = value;
 		this.attribute = attribute;
 		this.proficient = proficient;
@@ -45,10 +53,10 @@ private static final long serialVersionUID = 1L;
 
 
 
-	public Skill(int skill_id, String name, int value, Attribute attribute, boolean proficient) {
+	public Skill(int skill_id, String skill_name, int value, Attribute attribute, boolean proficient) {
 		super();
 		this.skill_id = skill_id;
-		this.name = name;
+		this.skill_name = skill_name;
 		this.value = value;
 		this.attribute = attribute;
 		this.proficient = proficient;
@@ -61,9 +69,9 @@ private static final long serialVersionUID = 1L;
 		final int prime = 31;
 		int result = 1;
 		result = prime * result + ((attribute == null) ? 0 : attribute.hashCode());
-		result = prime * result + ((name == null) ? 0 : name.hashCode());
 		result = prime * result + (proficient ? 1231 : 1237);
 		result = prime * result + skill_id;
+		result = prime * result + ((skill_name == null) ? 0 : skill_name.hashCode());
 		result = prime * result + value;
 		return result;
 	}
@@ -84,14 +92,14 @@ private static final long serialVersionUID = 1L;
 				return false;
 		} else if (!attribute.equals(other.attribute))
 			return false;
-		if (name == null) {
-			if (other.name != null)
-				return false;
-		} else if (!name.equals(other.name))
-			return false;
 		if (proficient != other.proficient)
 			return false;
 		if (skill_id != other.skill_id)
+			return false;
+		if (skill_name == null) {
+			if (other.skill_name != null)
+				return false;
+		} else if (!skill_name.equals(other.skill_name))
 			return false;
 		if (value != other.value)
 			return false;
@@ -102,9 +110,13 @@ private static final long serialVersionUID = 1L;
 
 	@Override
 	public String toString() {
-		return "Skill [skill_id=" + skill_id + ", name=" + name + ", value=" + value + ", attribute=" + attribute
-				+ ", proficient=" + proficient + "]";
+		return "Skill [skill_id=" + skill_id + ", skill_name=" + skill_name + ", value=" + value + ", attribute="
+				+ attribute + ", proficient=" + proficient + "]";
 	}
+
+
+
+	
 	
 	
 	

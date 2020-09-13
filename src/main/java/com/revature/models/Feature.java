@@ -21,7 +21,10 @@ public class Feature implements Serializable {
 	@Column(name = "feat_id", nullable = false)
 	private int feat_id;
 
-	private String name;
+	@Column(name = "feat_name", nullable = false)
+	private String feat_name;
+	
+	@Column(name = "f_description")
 	private String f_description;
 	
 	
@@ -31,17 +34,17 @@ public class Feature implements Serializable {
 	}
 
 
-	public Feature(String name, String f_description) {
+	public Feature(String feat_name, String f_description) {
 		super();
-		this.name = name;
+		this.feat_name = feat_name;
 		this.f_description = f_description;
 	}
 
 
-	public Feature(int feat_id, String name, String f_description) {
+	public Feature(int feat_id, String feat_name, String f_description) {
 		super();
 		this.feat_id = feat_id;
-		this.name = name;
+		this.feat_name = feat_name;
 		this.f_description = f_description;
 	}
 
@@ -52,7 +55,7 @@ public class Feature implements Serializable {
 		int result = 1;
 		result = prime * result + ((f_description == null) ? 0 : f_description.hashCode());
 		result = prime * result + feat_id;
-		result = prime * result + ((name == null) ? 0 : name.hashCode());
+		result = prime * result + ((feat_name == null) ? 0 : feat_name.hashCode());
 		return result;
 	}
 
@@ -73,10 +76,10 @@ public class Feature implements Serializable {
 			return false;
 		if (feat_id != other.feat_id)
 			return false;
-		if (name == null) {
-			if (other.name != null)
+		if (feat_name == null) {
+			if (other.feat_name != null)
 				return false;
-		} else if (!name.equals(other.name))
+		} else if (!feat_name.equals(other.feat_name))
 			return false;
 		return true;
 	}
@@ -84,9 +87,11 @@ public class Feature implements Serializable {
 
 	@Override
 	public String toString() {
-		return "Feature [feat_id=" + feat_id + ", name=" + name + ", f_description=" + f_description + "]";
+		return "Feature [feat_id=" + feat_id + ", feat_name=" + feat_name + ", f_description=" + f_description + "]";
 	}
 
+
+	
 
 	
 	

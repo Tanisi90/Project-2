@@ -21,8 +21,13 @@ public class Dice implements Serializable {
 	@Column(name = "dice_id", nullable = false)
 	private int dice_id;
 
+	@Column(name = "number")
 	private int number;
+	
+	@Column(name = "size")
 	private int size;
+	
+	@Column(name = "advantage")
 	private boolean advantage;
 	
 	

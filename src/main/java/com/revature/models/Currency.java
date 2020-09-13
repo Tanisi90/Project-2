@@ -20,11 +20,20 @@ public class Currency implements Serializable {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "curr_id", nullable = false)
 	private int curr_id;
-
+	
+	@Column(name = "copper")
 	private int copper;
+	
+	@Column(name = "silver")
 	private int silver;
+	
+	@Column(name = "gold")
 	private int gold;
+	
+	@Column(name = "platinum")
 	private int platinum;
+	
+	@Column(name = "total")
 	private double total;
 
 	public Currency() {
