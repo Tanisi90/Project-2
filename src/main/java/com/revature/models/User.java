@@ -3,11 +3,14 @@ package com.revature.models;
 import java.io.Serializable;
 import java.util.List;
 
+import javax.persistence.CollectionTable;
 import javax.persistence.Column;
+import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.Table;
 
 
@@ -37,7 +40,9 @@ private static final long serialVersionUID = 1L;
 	@Column(name = "email", nullable = false)
 	private String email;
 	
-	//Still working on this 
+	@ElementCollection
+	@CollectionTable(name = "Collect_Roles", joinColumns = @JoinColumn(name = "user_id"))
+	@Column(name = "roles", nullable = false)
 	private List<String> roles;
 	
 	

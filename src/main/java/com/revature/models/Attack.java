@@ -7,6 +7,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -29,7 +30,7 @@ public class Attack implements Serializable {
 	@Column (name = "bonus")
 	private int bonus;
 	
-	//@ManyToMany ??? 
+	@ManyToOne
 	private Dice damage;
 
 	public Attack() {

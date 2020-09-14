@@ -3,11 +3,14 @@ package com.revature.models;
 import java.io.Serializable;
 import java.util.List;
 
+import javax.persistence.CollectionTable;
 import javax.persistence.Column;
+import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.Table;
 
 @Entity
@@ -46,7 +49,9 @@ private static final long serialVersionUID = 1L;
 	@Column(name = "description")
 	private String description;
 	
-	//Still working on figuring this out
+	@ElementCollection
+	@CollectionTable(name = "Collect_Components", joinColumns = @JoinColumn(name = "spell_id"))
+	@Column(name = "components", nullable = false)
 	private List<Character> components;
 	
 	

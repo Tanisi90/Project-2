@@ -3,12 +3,14 @@ package com.revature.models;
 import java.io.Serializable;
 import java.util.List;
 
+import javax.persistence.CollectionTable;
 import javax.persistence.Column;
 import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.Table;
 
 @Entity
@@ -35,8 +37,9 @@ private static final long serialVersionUID = 1L;
 	@Column(name = "r_description")
 	private String r_description;
 	
-//	@ElementCollection
-//	@Column(name = "features", nullable = false)
+	@ElementCollection
+	@CollectionTable(name = "Collect_Features", joinColumns = @JoinColumn(name = "race_id"))
+	@Column(name = "features", nullable = false)
 	private List<Feature> features;
 	
 	

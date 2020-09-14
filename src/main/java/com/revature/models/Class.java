@@ -26,6 +26,34 @@ public class Class implements Serializable {
 	@Column(name = "level", nullable = false)
 	private int level;
 	
+	@Column(name = "maxFirst")
+	private int maxFirst;
+	
+	@Column(name = "maxSecond")
+	private int maxSecond;
+	
+	@Column(name = "maxThird")
+	private int maxThird;
+	
+	@Column(name = "maxFourth")
+	private int maxFourth;
+	
+	@Column(name = "maxFifth")
+	private int maxFifth;
+	
+	@Column(name = "maxSixth")
+	private int maxSixth;
+		
+	@Column(name = "maxSeventh")
+	private int maxSeventh;
+		
+	@Column(name = "maxEighth")
+	private int maxEighth;
+	
+	@Column(name = "maxNinth")
+	private int maxNinth;
+	
+	
 	//working on this
 	private Dice hitDice;
 	
