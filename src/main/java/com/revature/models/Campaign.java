@@ -3,10 +3,12 @@ package com.revature.models;
 import java.io.Serializable;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.CollectionTable;
 import javax.persistence.Column;
 import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -35,8 +37,9 @@ public class Campaign implements Serializable {
 	@Column(name = "visability")
 	private boolean visability;
 	
-	@ManyToOne
 	
+	@ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+	@JoinColumn(name = "camp_id", nullable = false)
 	private User dm;
 	
 	@ElementCollection
