@@ -32,9 +32,11 @@ public class Item implements Serializable {
 	@Column(name = "weight")
 	private double weight;
 	
-	@ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-	@JoinColumn(name = "user_id", nullable = false)
-	private Currency value;
+	
+	// Need to change to all 4 currencies
+//	@ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+//	@JoinColumn(name = "user_id", nullable = false)
+//	private Currency value;
 	
 	
 	public Item() {

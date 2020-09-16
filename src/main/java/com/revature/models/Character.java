@@ -96,15 +96,18 @@ public class Character implements Serializable {
 	@Column(name = "skills", nullable = false)
 	private List<Skill> skills;
 	
-	@ElementCollection
-	@CollectionTable(name = "Collect_Attacks", joinColumns = @JoinColumn(name = "char_id"))
-	@Column(name = "attacks", nullable = false)
-	private List<Attack> attacks;
+//	@ElementCollection
+//	@CollectionTable(name = "Collect_Attacks", joinColumns = @JoinColumn(name = "char_id"))
+//	@Column(name = "attacks", nullable = false)
+//	private List<Attack> attacks;
 	
+	
+	// We are gonna see how to pull this from the API
 	@ElementCollection
 	@CollectionTable(name = "Collect_Spells", joinColumns = @JoinColumn(name = "char_id"))
-	@Column(name = "spells", nullable = false)
+	@Column(name = "spells")
 	private List<Spell> spells;
+	
 	
 	@ElementCollection
 	@CollectionTable(name = "Collect_Equipment", joinColumns = @JoinColumn(name = "char_id"))
