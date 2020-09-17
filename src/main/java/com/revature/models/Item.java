@@ -44,22 +44,60 @@ public class Item implements Serializable {
 	}
 
 
-	public Item(String item_name, String item_description, double weight, Currency value) {
+	public Item(String item_name, String item_description, double weight) {
 		super();
 		this.item_name = item_name;
 		this.item_description = item_description;
 		this.weight = weight;
-		this.value = value;
 	}
 
 
-	public Item(int item_id, String item_name, String item_description, double weight, Currency value) {
+	public Item(int item_id, String item_name, String item_description, double weight) {
 		super();
 		this.item_id = item_id;
 		this.item_name = item_name;
 		this.item_description = item_description;
 		this.weight = weight;
-		this.value = value;
+	}
+
+
+	public int getItem_id() {
+		return item_id;
+	}
+
+
+	public void setItem_id(int item_id) {
+		this.item_id = item_id;
+	}
+
+
+	public String getItem_name() {
+		return item_name;
+	}
+
+
+	public void setItem_name(String item_name) {
+		this.item_name = item_name;
+	}
+
+
+	public String getItem_description() {
+		return item_description;
+	}
+
+
+	public void setItem_description(String item_description) {
+		this.item_description = item_description;
+	}
+
+
+	public double getWeight() {
+		return weight;
+	}
+
+
+	public void setWeight(double weight) {
+		this.weight = weight;
 	}
 
 
@@ -70,7 +108,6 @@ public class Item implements Serializable {
 		result = prime * result + ((item_description == null) ? 0 : item_description.hashCode());
 		result = prime * result + item_id;
 		result = prime * result + ((item_name == null) ? 0 : item_name.hashCode());
-		result = prime * result + ((value == null) ? 0 : value.hashCode());
 		long temp;
 		temp = Double.doubleToLongBits(weight);
 		result = prime * result + (int) (temp ^ (temp >>> 32));
@@ -99,11 +136,6 @@ public class Item implements Serializable {
 				return false;
 		} else if (!item_name.equals(other.item_name))
 			return false;
-		if (value == null) {
-			if (other.value != null)
-				return false;
-		} else if (!value.equals(other.value))
-			return false;
 		if (Double.doubleToLongBits(weight) != Double.doubleToLongBits(other.weight))
 			return false;
 		return true;
@@ -113,9 +145,10 @@ public class Item implements Serializable {
 	@Override
 	public String toString() {
 		return "Item [item_id=" + item_id + ", item_name=" + item_name + ", item_description=" + item_description
-				+ ", weight=" + weight + ", value=" + value + "]";
+				+ ", weight=" + weight + "]";
 	}
-	
+
+
 	
 
 	

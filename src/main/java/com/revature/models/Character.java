@@ -149,9 +149,9 @@ public class Character implements Serializable {
 	public Character(String char_name, String alignment, String char_background, int armorClass, int initiative,
 			int speed, int exp, int profBonus, int currentFirst, int currentSecond, int currentThird, int currentFourth,
 			int currentFifth, int currentSixth, int currentSeventh, int currentEighth, int currentNinth,
-			boolean inspiration, boolean visability, List<Attribute> attributes, List<Skill> skills,
-			List<Attack> attacks, List<Spell> spells, List<Item> equipment, List<String> languages,
-			List<String> proficiencies, Class class1, User player, Campaign campaign, Race race) {
+			boolean inspiration, boolean visability, List<Attribute> attributes, List<Skill> skills, List<Spell> spells,
+			List<Item> equipment, List<String> languages, List<String> proficiencies, Class class1, User player,
+			Campaign campaign, Race race) {
 		super();
 		this.char_name = char_name;
 		this.alignment = alignment;
@@ -174,7 +174,6 @@ public class Character implements Serializable {
 		this.visability = visability;
 		this.attributes = attributes;
 		this.skills = skills;
-		this.attacks = attacks;
 		this.spells = spells;
 		this.equipment = equipment;
 		this.languages = languages;
@@ -190,8 +189,8 @@ public class Character implements Serializable {
 			int initiative, int speed, int exp, int profBonus, int currentFirst, int currentSecond, int currentThird,
 			int currentFourth, int currentFifth, int currentSixth, int currentSeventh, int currentEighth,
 			int currentNinth, boolean inspiration, boolean visability, List<Attribute> attributes, List<Skill> skills,
-			List<Attack> attacks, List<Spell> spells, List<Item> equipment, List<String> languages,
-			List<String> proficiencies, Class class1, User player, Campaign campaign, Race race) {
+			List<Spell> spells, List<Item> equipment, List<String> languages, List<String> proficiencies, Class class1,
+			User player, Campaign campaign, Race race) {
 		super();
 		this.char_id = char_id;
 		this.char_name = char_name;
@@ -215,7 +214,6 @@ public class Character implements Serializable {
 		this.visability = visability;
 		this.attributes = attributes;
 		this.skills = skills;
-		this.attacks = attacks;
 		this.spells = spells;
 		this.equipment = equipment;
 		this.languages = languages;
@@ -227,13 +225,317 @@ public class Character implements Serializable {
 	}
 
 
+	public int getChar_id() {
+		return char_id;
+	}
+
+
+	public void setChar_id(int char_id) {
+		this.char_id = char_id;
+	}
+
+
+	public String getChar_name() {
+		return char_name;
+	}
+
+
+	public void setChar_name(String char_name) {
+		this.char_name = char_name;
+	}
+
+
+	public String getAlignment() {
+		return alignment;
+	}
+
+
+	public void setAlignment(String alignment) {
+		this.alignment = alignment;
+	}
+
+
+	public String getChar_background() {
+		return char_background;
+	}
+
+
+	public void setChar_background(String char_background) {
+		this.char_background = char_background;
+	}
+
+
+	public int getArmorClass() {
+		return armorClass;
+	}
+
+
+	public void setArmorClass(int armorClass) {
+		this.armorClass = armorClass;
+	}
+
+
+	public int getInitiative() {
+		return initiative;
+	}
+
+
+	public void setInitiative(int initiative) {
+		this.initiative = initiative;
+	}
+
+
+	public int getSpeed() {
+		return speed;
+	}
+
+
+	public void setSpeed(int speed) {
+		this.speed = speed;
+	}
+
+
+	public int getExp() {
+		return exp;
+	}
+
+
+	public void setExp(int exp) {
+		this.exp = exp;
+	}
+
+
+	public int getProfBonus() {
+		return profBonus;
+	}
+
+
+	public void setProfBonus(int profBonus) {
+		this.profBonus = profBonus;
+	}
+
+
+	public int getCurrentFirst() {
+		return currentFirst;
+	}
+
+
+	public void setCurrentFirst(int currentFirst) {
+		this.currentFirst = currentFirst;
+	}
+
+
+	public int getCurrentSecond() {
+		return currentSecond;
+	}
+
+
+	public void setCurrentSecond(int currentSecond) {
+		this.currentSecond = currentSecond;
+	}
+
+
+	public int getCurrentThird() {
+		return currentThird;
+	}
+
+
+	public void setCurrentThird(int currentThird) {
+		this.currentThird = currentThird;
+	}
+
+
+	public int getCurrentFourth() {
+		return currentFourth;
+	}
+
+
+	public void setCurrentFourth(int currentFourth) {
+		this.currentFourth = currentFourth;
+	}
+
+
+	public int getCurrentFifth() {
+		return currentFifth;
+	}
+
+
+	public void setCurrentFifth(int currentFifth) {
+		this.currentFifth = currentFifth;
+	}
+
+
+	public int getCurrentSixth() {
+		return currentSixth;
+	}
+
+
+	public void setCurrentSixth(int currentSixth) {
+		this.currentSixth = currentSixth;
+	}
+
+
+	public int getCurrentSeventh() {
+		return currentSeventh;
+	}
+
+
+	public void setCurrentSeventh(int currentSeventh) {
+		this.currentSeventh = currentSeventh;
+	}
+
+
+	public int getCurrentEighth() {
+		return currentEighth;
+	}
+
+
+	public void setCurrentEighth(int currentEighth) {
+		this.currentEighth = currentEighth;
+	}
+
+
+	public int getCurrentNinth() {
+		return currentNinth;
+	}
+
+
+	public void setCurrentNinth(int currentNinth) {
+		this.currentNinth = currentNinth;
+	}
+
+
+	public boolean isInspiration() {
+		return inspiration;
+	}
+
+
+	public void setInspiration(boolean inspiration) {
+		this.inspiration = inspiration;
+	}
+
+
+	public boolean isVisability() {
+		return visability;
+	}
+
+
+	public void setVisability(boolean visability) {
+		this.visability = visability;
+	}
+
+
+	public List<Attribute> getAttributes() {
+		return attributes;
+	}
+
+
+	public void setAttributes(List<Attribute> attributes) {
+		this.attributes = attributes;
+	}
+
+
+	public List<Skill> getSkills() {
+		return skills;
+	}
+
+
+	public void setSkills(List<Skill> skills) {
+		this.skills = skills;
+	}
+
+
+	public List<Spell> getSpells() {
+		return spells;
+	}
+
+
+	public void setSpells(List<Spell> spells) {
+		this.spells = spells;
+	}
+
+
+	public List<Item> getEquipment() {
+		return equipment;
+	}
+
+
+	public void setEquipment(List<Item> equipment) {
+		this.equipment = equipment;
+	}
+
+
+	public List<String> getLanguages() {
+		return languages;
+	}
+
+
+	public void setLanguages(List<String> languages) {
+		this.languages = languages;
+	}
+
+
+	public List<String> getProficiencies() {
+		return proficiencies;
+	}
+
+
+	public void setProficiencies(List<String> proficiencies) {
+		this.proficiencies = proficiencies;
+	}
+
+
+	public Class getClass1() {
+		return class1;
+	}
+
+
+	public void setClass1(Class class1) {
+		this.class1 = class1;
+	}
+
+
+	public User getPlayer() {
+		return player;
+	}
+
+
+	public void setPlayer(User player) {
+		this.player = player;
+	}
+
+
+	public Campaign getCampaign() {
+		return campaign;
+	}
+
+
+	public void setCampaign(Campaign campaign) {
+		this.campaign = campaign;
+	}
+
+
+	public Race getRace() {
+		return race;
+	}
+
+
+	public void setRace(Race race) {
+		this.race = race;
+	}
+
+
+	public static long getSerialversionuid() {
+		return serialVersionUID;
+	}
+
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
 		result = prime * result + ((alignment == null) ? 0 : alignment.hashCode());
 		result = prime * result + armorClass;
-		result = prime * result + ((attacks == null) ? 0 : attacks.hashCode());
 		result = prime * result + ((attributes == null) ? 0 : attributes.hashCode());
 		result = prime * result + ((campaign == null) ? 0 : campaign.hashCode());
 		result = prime * result + ((char_background == null) ? 0 : char_background.hashCode());
@@ -281,11 +583,6 @@ public class Character implements Serializable {
 		} else if (!alignment.equals(other.alignment))
 			return false;
 		if (armorClass != other.armorClass)
-			return false;
-		if (attacks == null) {
-			if (other.attacks != null)
-				return false;
-		} else if (!attacks.equals(other.attacks))
 			return false;
 		if (attributes == null) {
 			if (other.attributes != null)
@@ -392,10 +689,13 @@ public class Character implements Serializable {
 				+ currentFourth + ", currentFifth=" + currentFifth + ", currentSixth=" + currentSixth
 				+ ", currentSeventh=" + currentSeventh + ", currentEighth=" + currentEighth + ", currentNinth="
 				+ currentNinth + ", inspiration=" + inspiration + ", visability=" + visability + ", attributes="
-				+ attributes + ", skills=" + skills + ", attacks=" + attacks + ", spells=" + spells + ", equipment="
-				+ equipment + ", languages=" + languages + ", proficiencies=" + proficiencies + ", class1=" + class1
-				+ ", player=" + player + ", campaign=" + campaign + ", race=" + race + "]";
+				+ attributes + ", skills=" + skills + ", spells=" + spells + ", equipment=" + equipment + ", languages="
+				+ languages + ", proficiencies=" + proficiencies + ", class1=" + class1 + ", player=" + player
+				+ ", campaign=" + campaign + ", race=" + race + "]";
 	}
+
+
+
 	
 	
 
