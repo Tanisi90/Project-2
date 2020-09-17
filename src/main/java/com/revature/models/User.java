@@ -40,9 +40,11 @@ private static final long serialVersionUID = 1L;
 	@Column(name = "email", nullable = false)
 	private String email;
 	
+	//Nullable = true bc might not be a DM or have character made.
+	//Also might check how we're setting up roles.
 	@ElementCollection
 	@CollectionTable(name = "Collect_Roles", joinColumns = @JoinColumn(name = "user_id"))
-	@Column(name = "roles", nullable = false)
+	@Column(name = "roles")
 	private List<String> roles;
 	
 	

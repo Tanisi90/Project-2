@@ -31,7 +31,7 @@ private static final long serialVersionUID = 1L;
 	@Column(name = "proficient", nullable = false)
 	private boolean proficient;
 	
-	
+	//Edit to join etc
 	@ManyToOne
 	private Attribute attribute;
 

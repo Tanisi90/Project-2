@@ -21,19 +21,20 @@ public class Currency implements Serializable {
 	@Column(name = "curr_id", nullable = false)
 	private int curr_id;
 	
-	@Column(name = "copper")
+	//default all below to 0
+	@Column(name = "copper", nullable = false)
 	private int copper;
 	
-	@Column(name = "silver")
+	@Column(name = "silver", nullable = false)
 	private int silver;
 	
-	@Column(name = "gold")
+	@Column(name = "gold", nullable = false)
 	private int gold;
 	
-	@Column(name = "platinum")
+	@Column(name = "platinum", nullable = false)
 	private int platinum;
 	
-	@Column(name = "total")
+	@Column(name = "total", nullable = false)
 	private double total;
 
 	public Currency() {

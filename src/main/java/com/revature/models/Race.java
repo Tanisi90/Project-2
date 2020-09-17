@@ -31,7 +31,7 @@ private static final long serialVersionUID = 1L;
 	@Column(name = "subrace")
 	private String subrace;
 	
-	@Column(name = "size")
+	@Column(name = "size", nullable = false)
 	private String size;
 	
 	@Column(name = "r_description")

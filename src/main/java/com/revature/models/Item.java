@@ -23,13 +23,13 @@ public class Item implements Serializable {
 	@Column(name = "item_id", nullable = false)
 	private int item_id;
 	
-	@Column(name = "item_name")
+	@Column(name = "item_name", nullable = false)
 	private String item_name;
 	
 	@Column(name = "item_description")
 	private String item_description;
 	
-	@Column(name = "weight")
+	@Column(name = "weight", nullable = false)
 	private double weight;
 	
 	

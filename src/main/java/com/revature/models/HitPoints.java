@@ -35,10 +35,11 @@ public class HitPoints implements Serializable {
 	@Column(name = "maxHD", nullable = false)
 	private int maxHD;
 	
-	@Column(name = "deathSuccesses")
+	//default below to 0?
+	@Column(name = "deathSuccesses", nullable = false)
 	private int deathSuccesses;
 	
-	@Column(name = "deathFailures")
+	@Column(name = "deathFailures", nullable = false)
 	private int deathFailures;
 	
 	

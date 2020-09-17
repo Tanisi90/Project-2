@@ -28,13 +28,13 @@ public class Campaign implements Serializable {
 	@Column(name = "camp_id", nullable = false)
 	private int camp_id;
 	
-	@Column(name = "camp_name")
+	@Column(name = "camp_name", nullable = false)
 	private String camp_name;
 	
 	@Column(name = "camp_description")
 	private String camp_description;
 	
-	@Column(name = "visability")
+	@Column(name = "visability", nullable = false)
 	private boolean visability;
 	
 	

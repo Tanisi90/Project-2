@@ -21,16 +21,16 @@ public class Attribute implements Serializable {
 	@Column(name = "attrib_id", nullable = false)
 	private int attrib_id;
 	
-	@Column(name = "attrib_name")
+	@Column(name = "attrib_name", nullable = false)
 	private String attrib_name;
 	
-	@Column(name = "value")
+	@Column(name = "value", nullable = false)
 	private int value;
 	
-	@Column(name = "modifier")
+	@Column(name = "modifier", nullable = false)
 	private int modifier;
 	
-	@Column(name = "save")
+	@Column(name = "save", nullable = false)
 	private int save;
 	
 	
