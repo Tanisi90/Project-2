@@ -14,6 +14,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -102,7 +103,6 @@ public class Character implements Serializable {
 //	private List<Attack> attacks;
 	
 	
-	// We are gonna see how to pull this from the API
 	@ElementCollection
 	@CollectionTable(name = "Collect_Spells", joinColumns = @JoinColumn(name = "char_id"))
 	@Column(name = "spells")
@@ -139,6 +139,10 @@ public class Character implements Serializable {
 	@ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
 	@JoinColumn(name = "race_id", nullable = false)
 	private Race race;
+	
+	@OneToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+	@JoinColumn(name = "curr_id", nullable = false)
+	private Currency currency;
 
 
 	public Character() {
