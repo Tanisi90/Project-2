@@ -13,9 +13,18 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.Table;
 
+import org.springframework.stereotype.Component;
+
+import lombok.EqualsAndHashCode;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+import lombok.ToString;
+
 @Entity
 @Table(name = "Spell")
-
+@Component
+@Getter @Setter @NoArgsConstructor @EqualsAndHashCode @ToString
 public class Spell implements Serializable {
 	
 private static final long serialVersionUID = 1L;
@@ -55,9 +64,9 @@ private static final long serialVersionUID = 1L;
 //	private List<Character> components;
 
 	
-	public Spell() {
-		super();
-	}
+//	public Spell() {
+//		super();
+//	}
 
 public Spell(String spell_name) {
 	super();
@@ -70,58 +79,58 @@ public Spell(int spell_id, String spell_name) {
 	this.spell_name = spell_name;
 }
 
-public int getSpell_id() {
-	return spell_id;
-}
-
-public void setSpell_id(int spell_id) {
-	this.spell_id = spell_id;
-}
-
-public String getSpell_name() {
-	return spell_name;
-}
-
-public void setSpell_name(String spell_name) {
-	this.spell_name = spell_name;
-}
-
-public static long getSerialversionuid() {
-	return serialVersionUID;
-}
-
-@Override
-public int hashCode() {
-	final int prime = 31;
-	int result = 1;
-	result = prime * result + spell_id;
-	result = prime * result + ((spell_name == null) ? 0 : spell_name.hashCode());
-	return result;
-}
-
-@Override
-public boolean equals(Object obj) {
-	if (this == obj)
-		return true;
-	if (obj == null)
-		return false;
-	if (getClass() != obj.getClass())
-		return false;
-	Spell other = (Spell) obj;
-	if (spell_id != other.spell_id)
-		return false;
-	if (spell_name == null) {
-		if (other.spell_name != null)
-			return false;
-	} else if (!spell_name.equals(other.spell_name))
-		return false;
-	return true;
-}
-
-@Override
-public String toString() {
-	return "Spell [spell_id=" + spell_id + ", spell_name=" + spell_name + "]";
-}
+//public int getSpell_id() {
+//	return spell_id;
+//}
+//
+//public void setSpell_id(int spell_id) {
+//	this.spell_id = spell_id;
+//}
+//
+//public String getSpell_name() {
+//	return spell_name;
+//}
+//
+//public void setSpell_name(String spell_name) {
+//	this.spell_name = spell_name;
+//}
+//
+//public static long getSerialversionuid() {
+//	return serialVersionUID;
+//}
+//
+//@Override
+//public int hashCode() {
+//	final int prime = 31;
+//	int result = 1;
+//	result = prime * result + spell_id;
+//	result = prime * result + ((spell_name == null) ? 0 : spell_name.hashCode());
+//	return result;
+//}
+//
+//@Override
+//public boolean equals(Object obj) {
+//	if (this == obj)
+//		return true;
+//	if (obj == null)
+//		return false;
+//	if (getClass() != obj.getClass())
+//		return false;
+//	Spell other = (Spell) obj;
+//	if (spell_id != other.spell_id)
+//		return false;
+//	if (spell_name == null) {
+//		if (other.spell_name != null)
+//			return false;
+//	} else if (!spell_name.equals(other.spell_name))
+//		return false;
+//	return true;
+//}
+//
+//@Override
+//public String toString() {
+//	return "Spell [spell_id=" + spell_id + ", spell_name=" + spell_name + "]";
+//}
 
 
 }

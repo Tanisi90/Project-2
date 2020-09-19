@@ -1,6 +1,7 @@
 package com.revature.models;
 
 import java.io.Serializable;
+//import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -9,9 +10,18 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import org.springframework.stereotype.Component;
+
+import lombok.EqualsAndHashCode;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+import lombok.ToString;
+
 @Entity
 @Table(name = "Attribute")
-
+@Component
+@Getter @Setter @NoArgsConstructor @EqualsAndHashCode @ToString
 public class Attribute implements Serializable {
 
 	private static final long serialVersionUID = 1L;
@@ -34,9 +44,9 @@ public class Attribute implements Serializable {
 	private int save;
 	
 	
-	public Attribute() {
-		super();
-	}
+//	public Attribute() {
+//		super();
+//	}
 
 
 	public Attribute(String attrib_name, int value, int modifier, int save) {
@@ -58,50 +68,50 @@ public class Attribute implements Serializable {
 	}
 
 
-	@Override
-	public int hashCode() {
-		final int prime = 31;
-		int result = 1;
-		result = prime * result + attrib_id;
-		result = prime * result + ((attrib_name == null) ? 0 : attrib_name.hashCode());
-		result = prime * result + modifier;
-		result = prime * result + save;
-		result = prime * result + value;
-		return result;
-	}
-
-
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (obj == null)
-			return false;
-		if (getClass() != obj.getClass())
-			return false;
-		Attribute other = (Attribute) obj;
-		if (attrib_id != other.attrib_id)
-			return false;
-		if (attrib_name == null) {
-			if (other.attrib_name != null)
-				return false;
-		} else if (!attrib_name.equals(other.attrib_name))
-			return false;
-		if (modifier != other.modifier)
-			return false;
-		if (save != other.save)
-			return false;
-		if (value != other.value)
-			return false;
-		return true;
-	}
-
-
-	@Override
-	public String toString() {
-		return "Attribute [attrib_id=" + attrib_id + ", attrib_name=" + attrib_name + ", value=" + value + ", modifier="
-				+ modifier + ", save=" + save + "]";
-	}
+//	@Override
+//	public int hashCode() {
+//		final int prime = 31;
+//		int result = 1;
+//		result = prime * result + attrib_id;
+//		result = prime * result + ((attrib_name == null) ? 0 : attrib_name.hashCode());
+//		result = prime * result + modifier;
+//		result = prime * result + save;
+//		result = prime * result + value;
+//		return result;
+//	}
+//
+//
+//	@Override
+//	public boolean equals(Object obj) {
+//		if (this == obj)
+//			return true;
+//		if (obj == null)
+//			return false;
+//		if (getClass() != obj.getClass())
+//			return false;
+//		Attribute other = (Attribute) obj;
+//		if (attrib_id != other.attrib_id)
+//			return false;
+//		if (attrib_name == null) {
+//			if (other.attrib_name != null)
+//				return false;
+//		} else if (!attrib_name.equals(other.attrib_name))
+//			return false;
+//		if (modifier != other.modifier)
+//			return false;
+//		if (save != other.save)
+//			return false;
+//		if (value != other.value)
+//			return false;
+//		return true;
+//	}
+//
+//
+//	@Override
+//	public String toString() {
+//		return "Attribute [attrib_id=" + attrib_id + ", attrib_name=" + attrib_name + ", value=" + value + ", modifier="
+//				+ modifier + ", save=" + save + "]";
+//	}
 
 
 

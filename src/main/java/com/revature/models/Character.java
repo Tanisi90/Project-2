@@ -16,10 +16,21 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
+import javax.validation.constraints.PositiveOrZero;
+import javax.validation.constraints.Size;
+
+import org.springframework.stereotype.Component;
+
+import lombok.EqualsAndHashCode;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+import lombok.ToString;
 
 @Entity
 @Table(name = "Character")
-
+@Component
+@Getter @Setter @NoArgsConstructor @EqualsAndHashCode @ToString
 public class Character implements Serializable {
 
 	private static final long serialVersionUID = 1L;
@@ -27,9 +38,11 @@ public class Character implements Serializable {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "char_id", nullable = false)
+	@PositiveOrZero
 	private int char_id;
 	
 	@Column(name = "char_name", nullable = false)
+	@Size(min=6, max=30, message= "Your character name must be between 6 and 30 characters.")
 	private String char_name;
 	
 	@Column(name = "alignment", nullable = false)
@@ -145,9 +158,9 @@ public class Character implements Serializable {
 	private Currency currency;
 
 
-	public Character() {
-		super();
-	}
+//	public Character() {
+//		super();
+//	}
 
 
 	public Character(String char_name, String alignment, String char_background, int armorClass, int initiative,
@@ -229,475 +242,475 @@ public class Character implements Serializable {
 	}
 
 
-	public int getChar_id() {
-		return char_id;
-	}
-
-
-	public void setChar_id(int char_id) {
-		this.char_id = char_id;
-	}
-
-
-	public String getChar_name() {
-		return char_name;
-	}
-
-
-	public void setChar_name(String char_name) {
-		this.char_name = char_name;
-	}
-
-
-	public String getAlignment() {
-		return alignment;
-	}
-
-
-	public void setAlignment(String alignment) {
-		this.alignment = alignment;
-	}
-
-
-	public String getChar_background() {
-		return char_background;
-	}
-
-
-	public void setChar_background(String char_background) {
-		this.char_background = char_background;
-	}
-
-
-	public int getArmorClass() {
-		return armorClass;
-	}
-
-
-	public void setArmorClass(int armorClass) {
-		this.armorClass = armorClass;
-	}
-
-
-	public int getInitiative() {
-		return initiative;
-	}
-
-
-	public void setInitiative(int initiative) {
-		this.initiative = initiative;
-	}
-
-
-	public int getSpeed() {
-		return speed;
-	}
-
-
-	public void setSpeed(int speed) {
-		this.speed = speed;
-	}
-
-
-	public int getExp() {
-		return exp;
-	}
-
-
-	public void setExp(int exp) {
-		this.exp = exp;
-	}
-
-
-	public int getProfBonus() {
-		return profBonus;
-	}
-
-
-	public void setProfBonus(int profBonus) {
-		this.profBonus = profBonus;
-	}
-
-
-	public int getCurrentFirst() {
-		return currentFirst;
-	}
-
-
-	public void setCurrentFirst(int currentFirst) {
-		this.currentFirst = currentFirst;
-	}
-
-
-	public int getCurrentSecond() {
-		return currentSecond;
-	}
-
-
-	public void setCurrentSecond(int currentSecond) {
-		this.currentSecond = currentSecond;
-	}
-
-
-	public int getCurrentThird() {
-		return currentThird;
-	}
-
-
-	public void setCurrentThird(int currentThird) {
-		this.currentThird = currentThird;
-	}
-
-
-	public int getCurrentFourth() {
-		return currentFourth;
-	}
-
-
-	public void setCurrentFourth(int currentFourth) {
-		this.currentFourth = currentFourth;
-	}
-
-
-	public int getCurrentFifth() {
-		return currentFifth;
-	}
-
-
-	public void setCurrentFifth(int currentFifth) {
-		this.currentFifth = currentFifth;
-	}
-
-
-	public int getCurrentSixth() {
-		return currentSixth;
-	}
-
-
-	public void setCurrentSixth(int currentSixth) {
-		this.currentSixth = currentSixth;
-	}
-
-
-	public int getCurrentSeventh() {
-		return currentSeventh;
-	}
-
-
-	public void setCurrentSeventh(int currentSeventh) {
-		this.currentSeventh = currentSeventh;
-	}
-
-
-	public int getCurrentEighth() {
-		return currentEighth;
-	}
-
-
-	public void setCurrentEighth(int currentEighth) {
-		this.currentEighth = currentEighth;
-	}
-
-
-	public int getCurrentNinth() {
-		return currentNinth;
-	}
-
-
-	public void setCurrentNinth(int currentNinth) {
-		this.currentNinth = currentNinth;
-	}
-
-
-	public boolean isInspiration() {
-		return inspiration;
-	}
-
-
-	public void setInspiration(boolean inspiration) {
-		this.inspiration = inspiration;
-	}
-
-
-	public boolean isVisability() {
-		return visability;
-	}
-
-
-	public void setVisability(boolean visability) {
-		this.visability = visability;
-	}
-
-
-	public List<Attribute> getAttributes() {
-		return attributes;
-	}
-
-
-	public void setAttributes(List<Attribute> attributes) {
-		this.attributes = attributes;
-	}
-
-
-	public List<Skill> getSkills() {
-		return skills;
-	}
-
-
-	public void setSkills(List<Skill> skills) {
-		this.skills = skills;
-	}
-
-
-	public List<Spell> getSpells() {
-		return spells;
-	}
-
-
-	public void setSpells(List<Spell> spells) {
-		this.spells = spells;
-	}
-
-
-	public List<Item> getEquipment() {
-		return equipment;
-	}
-
-
-	public void setEquipment(List<Item> equipment) {
-		this.equipment = equipment;
-	}
-
-
-	public List<String> getLanguages() {
-		return languages;
-	}
-
-
-	public void setLanguages(List<String> languages) {
-		this.languages = languages;
-	}
-
-
-	public List<String> getProficiencies() {
-		return proficiencies;
-	}
-
-
-	public void setProficiencies(List<String> proficiencies) {
-		this.proficiencies = proficiencies;
-	}
-
-
-	public Class getClass1() {
-		return class1;
-	}
-
-
-	public void setClass1(Class class1) {
-		this.class1 = class1;
-	}
-
-
-	public User getPlayer() {
-		return player;
-	}
-
-
-	public void setPlayer(User player) {
-		this.player = player;
-	}
-
-
-	public Campaign getCampaign() {
-		return campaign;
-	}
-
-
-	public void setCampaign(Campaign campaign) {
-		this.campaign = campaign;
-	}
-
-
-	public Race getRace() {
-		return race;
-	}
-
-
-	public void setRace(Race race) {
-		this.race = race;
-	}
-
-
-	public static long getSerialversionuid() {
-		return serialVersionUID;
-	}
-
-
-	@Override
-	public int hashCode() {
-		final int prime = 31;
-		int result = 1;
-		result = prime * result + ((alignment == null) ? 0 : alignment.hashCode());
-		result = prime * result + armorClass;
-		result = prime * result + ((attributes == null) ? 0 : attributes.hashCode());
-		result = prime * result + ((campaign == null) ? 0 : campaign.hashCode());
-		result = prime * result + ((char_background == null) ? 0 : char_background.hashCode());
-		result = prime * result + char_id;
-		result = prime * result + ((char_name == null) ? 0 : char_name.hashCode());
-		result = prime * result + ((class1 == null) ? 0 : class1.hashCode());
-		result = prime * result + currentEighth;
-		result = prime * result + currentFifth;
-		result = prime * result + currentFirst;
-		result = prime * result + currentFourth;
-		result = prime * result + currentNinth;
-		result = prime * result + currentSecond;
-		result = prime * result + currentSeventh;
-		result = prime * result + currentSixth;
-		result = prime * result + currentThird;
-		result = prime * result + ((equipment == null) ? 0 : equipment.hashCode());
-		result = prime * result + exp;
-		result = prime * result + initiative;
-		result = prime * result + (inspiration ? 1231 : 1237);
-		result = prime * result + ((languages == null) ? 0 : languages.hashCode());
-		result = prime * result + ((player == null) ? 0 : player.hashCode());
-		result = prime * result + profBonus;
-		result = prime * result + ((proficiencies == null) ? 0 : proficiencies.hashCode());
-		result = prime * result + ((race == null) ? 0 : race.hashCode());
-		result = prime * result + ((skills == null) ? 0 : skills.hashCode());
-		result = prime * result + speed;
-		result = prime * result + ((spells == null) ? 0 : spells.hashCode());
-		result = prime * result + (visability ? 1231 : 1237);
-		return result;
-	}
-
-
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (obj == null)
-			return false;
-		if (getClass() != obj.getClass())
-			return false;
-		Character other = (Character) obj;
-		if (alignment == null) {
-			if (other.alignment != null)
-				return false;
-		} else if (!alignment.equals(other.alignment))
-			return false;
-		if (armorClass != other.armorClass)
-			return false;
-		if (attributes == null) {
-			if (other.attributes != null)
-				return false;
-		} else if (!attributes.equals(other.attributes))
-			return false;
-		if (campaign == null) {
-			if (other.campaign != null)
-				return false;
-		} else if (!campaign.equals(other.campaign))
-			return false;
-		if (char_background == null) {
-			if (other.char_background != null)
-				return false;
-		} else if (!char_background.equals(other.char_background))
-			return false;
-		if (char_id != other.char_id)
-			return false;
-		if (char_name == null) {
-			if (other.char_name != null)
-				return false;
-		} else if (!char_name.equals(other.char_name))
-			return false;
-		if (class1 == null) {
-			if (other.class1 != null)
-				return false;
-		} else if (!class1.equals(other.class1))
-			return false;
-		if (currentEighth != other.currentEighth)
-			return false;
-		if (currentFifth != other.currentFifth)
-			return false;
-		if (currentFirst != other.currentFirst)
-			return false;
-		if (currentFourth != other.currentFourth)
-			return false;
-		if (currentNinth != other.currentNinth)
-			return false;
-		if (currentSecond != other.currentSecond)
-			return false;
-		if (currentSeventh != other.currentSeventh)
-			return false;
-		if (currentSixth != other.currentSixth)
-			return false;
-		if (currentThird != other.currentThird)
-			return false;
-		if (equipment == null) {
-			if (other.equipment != null)
-				return false;
-		} else if (!equipment.equals(other.equipment))
-			return false;
-		if (exp != other.exp)
-			return false;
-		if (initiative != other.initiative)
-			return false;
-		if (inspiration != other.inspiration)
-			return false;
-		if (languages == null) {
-			if (other.languages != null)
-				return false;
-		} else if (!languages.equals(other.languages))
-			return false;
-		if (player == null) {
-			if (other.player != null)
-				return false;
-		} else if (!player.equals(other.player))
-			return false;
-		if (profBonus != other.profBonus)
-			return false;
-		if (proficiencies == null) {
-			if (other.proficiencies != null)
-				return false;
-		} else if (!proficiencies.equals(other.proficiencies))
-			return false;
-		if (race == null) {
-			if (other.race != null)
-				return false;
-		} else if (!race.equals(other.race))
-			return false;
-		if (skills == null) {
-			if (other.skills != null)
-				return false;
-		} else if (!skills.equals(other.skills))
-			return false;
-		if (speed != other.speed)
-			return false;
-		if (spells == null) {
-			if (other.spells != null)
-				return false;
-		} else if (!spells.equals(other.spells))
-			return false;
-		if (visability != other.visability)
-			return false;
-		return true;
-	}
-
-
-	@Override
-	public String toString() {
-		return "Character [char_id=" + char_id + ", char_name=" + char_name + ", alignment=" + alignment
-				+ ", char_background=" + char_background + ", armorClass=" + armorClass + ", initiative=" + initiative
-				+ ", speed=" + speed + ", exp=" + exp + ", profBonus=" + profBonus + ", currentFirst=" + currentFirst
-				+ ", currentSecond=" + currentSecond + ", currentThird=" + currentThird + ", currentFourth="
-				+ currentFourth + ", currentFifth=" + currentFifth + ", currentSixth=" + currentSixth
-				+ ", currentSeventh=" + currentSeventh + ", currentEighth=" + currentEighth + ", currentNinth="
-				+ currentNinth + ", inspiration=" + inspiration + ", visability=" + visability + ", attributes="
-				+ attributes + ", skills=" + skills + ", spells=" + spells + ", equipment=" + equipment + ", languages="
-				+ languages + ", proficiencies=" + proficiencies + ", class1=" + class1 + ", player=" + player
-				+ ", campaign=" + campaign + ", race=" + race + "]";
-	}
-
+//	public int getChar_id() {
+//		return char_id;
+//	}
+//
+//
+//	public void setChar_id(int char_id) {
+//		this.char_id = char_id;
+//	}
+//
+//
+//	public String getChar_name() {
+//		return char_name;
+//	}
+//
+//
+//	public void setChar_name(String char_name) {
+//		this.char_name = char_name;
+//	}
+//
+//
+//	public String getAlignment() {
+//		return alignment;
+//	}
+//
+//
+//	public void setAlignment(String alignment) {
+//		this.alignment = alignment;
+//	}
+//
+//
+//	public String getChar_background() {
+//		return char_background;
+//	}
+//
+//
+//	public void setChar_background(String char_background) {
+//		this.char_background = char_background;
+//	}
+//
+//
+//	public int getArmorClass() {
+//		return armorClass;
+//	}
+//
+//
+//	public void setArmorClass(int armorClass) {
+//		this.armorClass = armorClass;
+//	}
+//
+//
+//	public int getInitiative() {
+//		return initiative;
+//	}
+//
+//
+//	public void setInitiative(int initiative) {
+//		this.initiative = initiative;
+//	}
+//
+//
+//	public int getSpeed() {
+//		return speed;
+//	}
+//
+//
+//	public void setSpeed(int speed) {
+//		this.speed = speed;
+//	}
+//
+//
+//	public int getExp() {
+//		return exp;
+//	}
+//
+//
+//	public void setExp(int exp) {
+//		this.exp = exp;
+//	}
+//
+//
+//	public int getProfBonus() {
+//		return profBonus;
+//	}
+//
+//
+//	public void setProfBonus(int profBonus) {
+//		this.profBonus = profBonus;
+//	}
+//
+//
+//	public int getCurrentFirst() {
+//		return currentFirst;
+//	}
+//
+//
+//	public void setCurrentFirst(int currentFirst) {
+//		this.currentFirst = currentFirst;
+//	}
+//
+//
+//	public int getCurrentSecond() {
+//		return currentSecond;
+//	}
+//
+//
+//	public void setCurrentSecond(int currentSecond) {
+//		this.currentSecond = currentSecond;
+//	}
+//
+//
+//	public int getCurrentThird() {
+//		return currentThird;
+//	}
+//
+//
+//	public void setCurrentThird(int currentThird) {
+//		this.currentThird = currentThird;
+//	}
+//
+//
+//	public int getCurrentFourth() {
+//		return currentFourth;
+//	}
+//
+//
+//	public void setCurrentFourth(int currentFourth) {
+//		this.currentFourth = currentFourth;
+//	}
+//
+//
+//	public int getCurrentFifth() {
+//		return currentFifth;
+//	}
+//
+//
+//	public void setCurrentFifth(int currentFifth) {
+//		this.currentFifth = currentFifth;
+//	}
+//
+//
+//	public int getCurrentSixth() {
+//		return currentSixth;
+//	}
+//
+//
+//	public void setCurrentSixth(int currentSixth) {
+//		this.currentSixth = currentSixth;
+//	}
+//
+//
+//	public int getCurrentSeventh() {
+//		return currentSeventh;
+//	}
+//
+//
+//	public void setCurrentSeventh(int currentSeventh) {
+//		this.currentSeventh = currentSeventh;
+//	}
+//
+//
+//	public int getCurrentEighth() {
+//		return currentEighth;
+//	}
+//
+//
+//	public void setCurrentEighth(int currentEighth) {
+//		this.currentEighth = currentEighth;
+//	}
+//
+//
+//	public int getCurrentNinth() {
+//		return currentNinth;
+//	}
+//
+//
+//	public void setCurrentNinth(int currentNinth) {
+//		this.currentNinth = currentNinth;
+//	}
+//
+//
+//	public boolean isInspiration() {
+//		return inspiration;
+//	}
+//
+//
+//	public void setInspiration(boolean inspiration) {
+//		this.inspiration = inspiration;
+//	}
+//
+//
+//	public boolean isVisability() {
+//		return visability;
+//	}
+//
+//
+//	public void setVisability(boolean visability) {
+//		this.visability = visability;
+//	}
+//
+//
+//	public List<Attribute> getAttributes() {
+//		return attributes;
+//	}
+//
+//
+//	public void setAttributes(List<Attribute> attributes) {
+//		this.attributes = attributes;
+//	}
+//
+//
+//	public List<Skill> getSkills() {
+//		return skills;
+//	}
+//
+//
+//	public void setSkills(List<Skill> skills) {
+//		this.skills = skills;
+//	}
+//
+//
+//	public List<Spell> getSpells() {
+//		return spells;
+//	}
+//
+//
+//	public void setSpells(List<Spell> spells) {
+//		this.spells = spells;
+//	}
+//
+//
+//	public List<Item> getEquipment() {
+//		return equipment;
+//	}
+//
+//
+//	public void setEquipment(List<Item> equipment) {
+//		this.equipment = equipment;
+//	}
+//
+//
+//	public List<String> getLanguages() {
+//		return languages;
+//	}
+//
+//
+//	public void setLanguages(List<String> languages) {
+//		this.languages = languages;
+//	}
+//
+//
+//	public List<String> getProficiencies() {
+//		return proficiencies;
+//	}
+//
+//
+//	public void setProficiencies(List<String> proficiencies) {
+//		this.proficiencies = proficiencies;
+//	}
+//
+//
+//	public Class getClass1() {
+//		return class1;
+//	}
+//
+//
+//	public void setClass1(Class class1) {
+//		this.class1 = class1;
+//	}
+//
+//
+//	public User getPlayer() {
+//		return player;
+//	}
+//
+//
+//	public void setPlayer(User player) {
+//		this.player = player;
+//	}
+//
+//
+//	public Campaign getCampaign() {
+//		return campaign;
+//	}
+//
+//
+//	public void setCampaign(Campaign campaign) {
+//		this.campaign = campaign;
+//	}
+//
+//
+//	public Race getRace() {
+//		return race;
+//	}
+//
+//
+//	public void setRace(Race race) {
+//		this.race = race;
+//	}
+//
+//
+//	public static long getSerialversionuid() {
+//		return serialVersionUID;
+//	}
+//
+//
+//	@Override
+//	public int hashCode() {
+//		final int prime = 31;
+//		int result = 1;
+//		result = prime * result + ((alignment == null) ? 0 : alignment.hashCode());
+//		result = prime * result + armorClass;
+//		result = prime * result + ((attributes == null) ? 0 : attributes.hashCode());
+//		result = prime * result + ((campaign == null) ? 0 : campaign.hashCode());
+//		result = prime * result + ((char_background == null) ? 0 : char_background.hashCode());
+//		result = prime * result + char_id;
+//		result = prime * result + ((char_name == null) ? 0 : char_name.hashCode());
+//		result = prime * result + ((class1 == null) ? 0 : class1.hashCode());
+//		result = prime * result + currentEighth;
+//		result = prime * result + currentFifth;
+//		result = prime * result + currentFirst;
+//		result = prime * result + currentFourth;
+//		result = prime * result + currentNinth;
+//		result = prime * result + currentSecond;
+//		result = prime * result + currentSeventh;
+//		result = prime * result + currentSixth;
+//		result = prime * result + currentThird;
+//		result = prime * result + ((equipment == null) ? 0 : equipment.hashCode());
+//		result = prime * result + exp;
+//		result = prime * result + initiative;
+//		result = prime * result + (inspiration ? 1231 : 1237);
+//		result = prime * result + ((languages == null) ? 0 : languages.hashCode());
+//		result = prime * result + ((player == null) ? 0 : player.hashCode());
+//		result = prime * result + profBonus;
+//		result = prime * result + ((proficiencies == null) ? 0 : proficiencies.hashCode());
+//		result = prime * result + ((race == null) ? 0 : race.hashCode());
+//		result = prime * result + ((skills == null) ? 0 : skills.hashCode());
+//		result = prime * result + speed;
+//		result = prime * result + ((spells == null) ? 0 : spells.hashCode());
+//		result = prime * result + (visability ? 1231 : 1237);
+//		return result;
+//	}
+//
+//
+//	@Override
+//	public boolean equals(Object obj) {
+//		if (this == obj)
+//			return true;
+//		if (obj == null)
+//			return false;
+//		if (getClass() != obj.getClass())
+//			return false;
+//		Character other = (Character) obj;
+//		if (alignment == null) {
+//			if (other.alignment != null)
+//				return false;
+//		} else if (!alignment.equals(other.alignment))
+//			return false;
+//		if (armorClass != other.armorClass)
+//			return false;
+//		if (attributes == null) {
+//			if (other.attributes != null)
+//				return false;
+//		} else if (!attributes.equals(other.attributes))
+//			return false;
+//		if (campaign == null) {
+//			if (other.campaign != null)
+//				return false;
+//		} else if (!campaign.equals(other.campaign))
+//			return false;
+//		if (char_background == null) {
+//			if (other.char_background != null)
+//				return false;
+//		} else if (!char_background.equals(other.char_background))
+//			return false;
+//		if (char_id != other.char_id)
+//			return false;
+//		if (char_name == null) {
+//			if (other.char_name != null)
+//				return false;
+//		} else if (!char_name.equals(other.char_name))
+//			return false;
+//		if (class1 == null) {
+//			if (other.class1 != null)
+//				return false;
+//		} else if (!class1.equals(other.class1))
+//			return false;
+//		if (currentEighth != other.currentEighth)
+//			return false;
+//		if (currentFifth != other.currentFifth)
+//			return false;
+//		if (currentFirst != other.currentFirst)
+//			return false;
+//		if (currentFourth != other.currentFourth)
+//			return false;
+//		if (currentNinth != other.currentNinth)
+//			return false;
+//		if (currentSecond != other.currentSecond)
+//			return false;
+//		if (currentSeventh != other.currentSeventh)
+//			return false;
+//		if (currentSixth != other.currentSixth)
+//			return false;
+//		if (currentThird != other.currentThird)
+//			return false;
+//		if (equipment == null) {
+//			if (other.equipment != null)
+//				return false;
+//		} else if (!equipment.equals(other.equipment))
+//			return false;
+//		if (exp != other.exp)
+//			return false;
+//		if (initiative != other.initiative)
+//			return false;
+//		if (inspiration != other.inspiration)
+//			return false;
+//		if (languages == null) {
+//			if (other.languages != null)
+//				return false;
+//		} else if (!languages.equals(other.languages))
+//			return false;
+//		if (player == null) {
+//			if (other.player != null)
+//				return false;
+//		} else if (!player.equals(other.player))
+//			return false;
+//		if (profBonus != other.profBonus)
+//			return false;
+//		if (proficiencies == null) {
+//			if (other.proficiencies != null)
+//				return false;
+//		} else if (!proficiencies.equals(other.proficiencies))
+//			return false;
+//		if (race == null) {
+//			if (other.race != null)
+//				return false;
+//		} else if (!race.equals(other.race))
+//			return false;
+//		if (skills == null) {
+//			if (other.skills != null)
+//				return false;
+//		} else if (!skills.equals(other.skills))
+//			return false;
+//		if (speed != other.speed)
+//			return false;
+//		if (spells == null) {
+//			if (other.spells != null)
+//				return false;
+//		} else if (!spells.equals(other.spells))
+//			return false;
+//		if (visability != other.visability)
+//			return false;
+//		return true;
+//	}
+//
+//
+//	@Override
+//	public String toString() {
+//		return "Character [char_id=" + char_id + ", char_name=" + char_name + ", alignment=" + alignment
+//				+ ", char_background=" + char_background + ", armorClass=" + armorClass + ", initiative=" + initiative
+//				+ ", speed=" + speed + ", exp=" + exp + ", profBonus=" + profBonus + ", currentFirst=" + currentFirst
+//				+ ", currentSecond=" + currentSecond + ", currentThird=" + currentThird + ", currentFourth="
+//				+ currentFourth + ", currentFifth=" + currentFifth + ", currentSixth=" + currentSixth
+//				+ ", currentSeventh=" + currentSeventh + ", currentEighth=" + currentEighth + ", currentNinth="
+//				+ currentNinth + ", inspiration=" + inspiration + ", visability=" + visability + ", attributes="
+//				+ attributes + ", skills=" + skills + ", spells=" + spells + ", equipment=" + equipment + ", languages="
+//				+ languages + ", proficiencies=" + proficiencies + ", class1=" + class1 + ", player=" + player
+//				+ ", campaign=" + campaign + ", race=" + race + "]";
+//	}
+//
 
 
 	

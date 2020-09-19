@@ -1,6 +1,7 @@
 package com.revature.models;
 
 import java.io.Serializable;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -10,9 +11,18 @@ import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import org.springframework.stereotype.Component;
+
+import lombok.EqualsAndHashCode;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+import lombok.ToString;
+
 @Entity
 @Table(name = "Skill")
-
+@Component
+@Getter @Setter @NoArgsConstructor @EqualsAndHashCode @ToString
 public class Skill implements Serializable {
 	
 private static final long serialVersionUID = 1L;
@@ -38,9 +48,9 @@ private static final long serialVersionUID = 1L;
 	
 	
 	
-	public Skill() {
-		super();
-	}
+//	public Skill() {
+//		super();
+//	}
 
 
 
@@ -65,55 +75,55 @@ private static final long serialVersionUID = 1L;
 
 
 
-	@Override
-	public int hashCode() {
-		final int prime = 31;
-		int result = 1;
-		result = prime * result + ((attribute == null) ? 0 : attribute.hashCode());
-		result = prime * result + (proficient ? 1231 : 1237);
-		result = prime * result + skill_id;
-		result = prime * result + ((skill_name == null) ? 0 : skill_name.hashCode());
-		result = prime * result + value;
-		return result;
-	}
-
-
-
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (obj == null)
-			return false;
-		if (getClass() != obj.getClass())
-			return false;
-		Skill other = (Skill) obj;
-		if (attribute == null) {
-			if (other.attribute != null)
-				return false;
-		} else if (!attribute.equals(other.attribute))
-			return false;
-		if (proficient != other.proficient)
-			return false;
-		if (skill_id != other.skill_id)
-			return false;
-		if (skill_name == null) {
-			if (other.skill_name != null)
-				return false;
-		} else if (!skill_name.equals(other.skill_name))
-			return false;
-		if (value != other.value)
-			return false;
-		return true;
-	}
-
-
-
-	@Override
-	public String toString() {
-		return "Skill [skill_id=" + skill_id + ", skill_name=" + skill_name + ", value=" + value + ", attribute="
-				+ attribute + ", proficient=" + proficient + "]";
-	}
+//	@Override
+//	public int hashCode() {
+//		final int prime = 31;
+//		int result = 1;
+//		result = prime * result + ((attribute == null) ? 0 : attribute.hashCode());
+//		result = prime * result + (proficient ? 1231 : 1237);
+//		result = prime * result + skill_id;
+//		result = prime * result + ((skill_name == null) ? 0 : skill_name.hashCode());
+//		result = prime * result + value;
+//		return result;
+//	}
+//
+//
+//
+//	@Override
+//	public boolean equals(Object obj) {
+//		if (this == obj)
+//			return true;
+//		if (obj == null)
+//			return false;
+//		if (getClass() != obj.getClass())
+//			return false;
+//		Skill other = (Skill) obj;
+//		if (attribute == null) {
+//			if (other.attribute != null)
+//				return false;
+//		} else if (!attribute.equals(other.attribute))
+//			return false;
+//		if (proficient != other.proficient)
+//			return false;
+//		if (skill_id != other.skill_id)
+//			return false;
+//		if (skill_name == null) {
+//			if (other.skill_name != null)
+//				return false;
+//		} else if (!skill_name.equals(other.skill_name))
+//			return false;
+//		if (value != other.value)
+//			return false;
+//		return true;
+//	}
+//
+//
+//
+//	@Override
+//	public String toString() {
+//		return "Skill [skill_id=" + skill_id + ", skill_name=" + skill_name + ", value=" + value + ", attribute="
+//				+ attribute + ", proficient=" + proficient + "]";
+//	}
 
 
 
