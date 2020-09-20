@@ -12,6 +12,11 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.Table;
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.PositiveOrZero;
 
 import org.springframework.stereotype.Component;
 
@@ -33,21 +38,27 @@ private static final long serialVersionUID = 1L;
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	@Column(name = "user_id", nullable = false)
+	@PositiveOrZero
 	private int user_id;
 	
 	@Column(name = "username", nullable = false)
+	@NotNull(message = "You must have a username to play")
 	private String username;
 	
 	@Column(name = "password", nullable = false)
+	@NotNull(message = "Passwords are a must to enter the game.")
 	private String password;
 	
 	@Column(name = "first_name", nullable = false)
+	@NotBlank(message = "Are you alive? If so I need to know your name!")
 	private String first_name;
 	
 	@Column(name = "last_name", nullable = false)
+	@NotBlank(message = "What's the family name?")
 	private String last_name;
 	
 	@Column(name = "email", nullable = false)
+	@Email
 	private String email;
 	
 	//Nullable = true bc might not be a DM or have character made.

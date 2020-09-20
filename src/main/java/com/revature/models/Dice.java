@@ -9,6 +9,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.PositiveOrZero;
 
 import org.springframework.stereotype.Component;
 
@@ -29,12 +31,15 @@ public class Dice implements Serializable {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "dice_id", nullable = false)
+	@PositiveOrZero
 	private int dice_id;
 
 	@Column(name = "number", nullable = false)
+	@NotNull(message = "There are numbers on these dice.")
 	private int number;
 	
 	@Column(name = "size", nullable = false)
+	@PositiveOrZero
 	private int size;
 	
 //	@Column(name = "advantage", nullable = false)

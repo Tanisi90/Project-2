@@ -16,6 +16,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 import javax.validation.constraints.PositiveOrZero;
 import javax.validation.constraints.Size;
 
@@ -46,52 +48,68 @@ public class Character implements Serializable {
 	private String char_name;
 	
 	@Column(name = "alignment", nullable = false)
+	@NotNull(message = "Are you a moral person or naw?")
 	private String alignment;
 	
 	@Column(name = "char_background", nullable = false)
+	@NotNull(message = "I know you come from somewhere!")
 	private String char_background;
 	
 	@Column(name = "armorClass", nullable = false)
+	@PositiveOrZero
 	private int armorClass;
 	
 	@Column(name = "initiative", nullable = false)
+	@PositiveOrZero
 	private int initiative;
 	
 	@Column(name = "speed", nullable = false)
+	@PositiveOrZero
 	private int speed;
 	
 	@Column(name = "exp", nullable = false)
+	@PositiveOrZero
 	private int exp;
 	
 	@Column(name = "profBonus", nullable = false)
+	@PositiveOrZero
 	private int profBonus;
 	
-	
+	//Current is for the spell slots
 	@Column(name = "currentFirst")
+	@PositiveOrZero
 	private int currentFirst;
 	
 	@Column(name = "currentSecond")
+	@PositiveOrZero
 	private int currentSecond;
 	
 	@Column(name = "currentThird")
+	@PositiveOrZero
 	private int currentThird;
 	
 	@Column(name = "currentFourth")
+	@PositiveOrZero
 	private int currentFourth;
 	
 	@Column(name = "currentFifth")
+	@PositiveOrZero
 	private int currentFifth;
 	
 	@Column(name = "currentSixth")
+	@PositiveOrZero
 	private int currentSixth;
 		
 	@Column(name = "currentSeventh")
+	@PositiveOrZero
 	private int currentSeventh;
 		
 	@Column(name = "currentEighth")
+	@PositiveOrZero
 	private int currentEighth;
 	
 	@Column(name = "currentNinth")
+	@PositiveOrZero
 	private int currentNinth;
 	
 	@Column(name = "inspiration", nullable = false)
@@ -103,11 +121,13 @@ public class Character implements Serializable {
 	@ElementCollection
 	@CollectionTable(name = "Collect_Attribute", joinColumns = @JoinColumn(name = "char_id"))
 	@Column(name = "attributes", nullable = false)
+	@NotNull(message = "You must have an attribute.")
 	private List<Attribute> attributes;
 	
 	@ElementCollection
 	@CollectionTable(name = "Collect_Skills", joinColumns = @JoinColumn(name = "char_id"))
 	@Column(name = "skills", nullable = false)
+	@NotNull(message = "Combat skills are a must!")
 	private List<Skill> skills;
 	
 //	@ElementCollection
@@ -125,36 +145,44 @@ public class Character implements Serializable {
 	@ElementCollection
 	@CollectionTable(name = "Collect_Equipment", joinColumns = @JoinColumn(name = "char_id"))
 	@Column(name = "equipment", nullable = false)
+	@NotNull(message = "You can't streak in this game!")
 	private List<Item> equipment;
 	
 	@ElementCollection
 	@CollectionTable(name = "Collect_Languages", joinColumns = @JoinColumn(name = "char_id"))
 	@Column(name = "languages", nullable = false)
+	@NotNull(message = "Everyone has a language!")
 	private List<String> languages;
 	
 	@ElementCollection
 	@CollectionTable(name = "Collect_Proficiencies", joinColumns = @JoinColumn(name = "char_id"))
 	@Column(name = "proficiencies", nullable = false)
+	@NotNull(message = "Everyone is good at something!")
 	private List<String> proficiencies;
 	
 	@ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
 	@JoinColumn(name = "class_id", nullable = false)
+	@NotNull(message = "Everyone belongs somewhere!")
 	private Class class1;
 	
 	@ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
 	@JoinColumn(name = "user_id", nullable = false)
+	@NotNull(message = "Every player has an ID!")
 	private User player;
 	
 	@ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
 	@JoinColumn(name = "camp_id", nullable = false)
+	@NotNull(message = "If a campaign is created so was a number.")
 	private Campaign campaign;
 	
 	@ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
 	@JoinColumn(name = "race_id", nullable = false)
+	@NotNull(message = "If it exist it has a race.")
 	private Race race;
 	
 	@OneToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
 	@JoinColumn(name = "curr_id", nullable = false)
+	@NotNull(message = "You started from the bottom now you'll sell.")
 	private Currency currency;
 
 

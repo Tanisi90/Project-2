@@ -9,6 +9,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.PositiveOrZero;
 
 import org.springframework.stereotype.Component;
 
@@ -29,39 +31,51 @@ public class Class implements Serializable {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "class_id", nullable = false)
+	@PositiveOrZero
 	private int class_id;
 	
 	@Column(name = "class_name", nullable = false)
+	@NotEmpty(message = "We all belong somewhere")
 	private String class_name;
 	
 	@Column(name = "level", nullable = false)
+	@PositiveOrZero // can't start at level 0 have to start at level 1 right?
 	private int level;
 	
 	@Column(name = "maxFirst")
+	@PositiveOrZero
 	private int maxFirst;
 	
 	@Column(name = "maxSecond")
+	@PositiveOrZero
 	private int maxSecond;
 	
 	@Column(name = "maxThird")
+	@PositiveOrZero
 	private int maxThird;
 	
 	@Column(name = "maxFourth")
+	@PositiveOrZero
 	private int maxFourth;
 	
 	@Column(name = "maxFifth")
+	@PositiveOrZero
 	private int maxFifth;
 	
 	@Column(name = "maxSixth")
+	@PositiveOrZero
 	private int maxSixth;
 		
 	@Column(name = "maxSeventh")
+	@PositiveOrZero
 	private int maxSeventh;
 		
 	@Column(name = "maxEighth")
+	@PositiveOrZero
 	private int maxEighth;
 	
 	@Column(name = "maxNinth")
+	@PositiveOrZero
 	private int maxNinth;
 	
 	

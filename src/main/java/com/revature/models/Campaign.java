@@ -15,6 +15,9 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.PositiveOrZero;
 
 import org.springframework.stereotype.Component;
 
@@ -35,25 +38,32 @@ public class Campaign implements Serializable {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "camp_id", nullable = false)
+	@PositiveOrZero
 	private int camp_id;
 	
 	@Column(name = "camp_name", nullable = false)
+	@NotEmpty(message = "Every Campaign has a name.")
 	private String camp_name;
 	
 	@Column(name = "camp_description")
 	private String camp_description;
 	
-	@Column(name = "visability", nullable = false)
-	private boolean visability;
+	@Column(name = "visibility", nullable = false)
+	private boolean visibility;
+	
+	@Column(name = "notes")
+	private String notes;
 	
 	
 	@ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
 	@JoinColumn(name = "camp_id", nullable = false)
+	@NotEmpty(message = "Every campaign has one DM!") 
 	private User dm;
 	
 	@ElementCollection
 	@CollectionTable(name = "Collect_Players", joinColumns = @JoinColumn(name = "camp_id"))
 	@Column(name = "players", nullable = false)
+	@NotEmpty(message= "If there is game there must be players!")
 	private List<User> players;
 
 //
@@ -67,7 +77,7 @@ public class Campaign implements Serializable {
 		this.camp_description = camp_description;
 		this.dm = dm;
 		this.players = players;
-		this.visability = visability;
+		this.visibility = visibility;
 	}
 
 	public Campaign(int camp_id, String camp_name, String camp_description, User dm, List<User> players,
@@ -78,7 +88,7 @@ public class Campaign implements Serializable {
 		this.camp_description = camp_description;
 		this.dm = dm;
 		this.players = players;
-		this.visability = visability;
+		this.visibility = visibility;
 	}
 
 //	@Override

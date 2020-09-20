@@ -12,6 +12,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.Table;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.PositiveOrZero;
 
 import org.springframework.stereotype.Component;
 
@@ -32,15 +34,18 @@ private static final long serialVersionUID = 1L;
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	@Column(name = "race_id", nullable = false)
+	@PositiveOrZero
 	private int race_id;
 	
 	@Column(name = "race_name", nullable = false)
+	@NotEmpty(message = "It's and Elf its and Orc it's a....?")
 	private String race_name;
 	
 	@Column(name = "subrace")
 	private String subrace;
 	
 	@Column(name = "size", nullable = false)
+	@NotEmpty(message = "Yeah yeah most are medium but what are you?")
 	private String size;
 	
 	@Column(name = "r_description")
@@ -49,6 +54,7 @@ private static final long serialVersionUID = 1L;
 	@ElementCollection
 	@CollectionTable(name = "Collect_Features", joinColumns = @JoinColumn(name = "race_id"))
 	@Column(name = "features", nullable = false)
+	@NotEmpty(message = "Every race has unique features.")
 	private List<Feature> features;
 	
 	

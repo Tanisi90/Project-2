@@ -13,6 +13,8 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.PositiveOrZero;
 
 import org.springframework.stereotype.Component;
 
@@ -32,15 +34,19 @@ public class Item implements Serializable {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "item_id", nullable = false)
+	@PositiveOrZero
 	private int item_id;
 	
 	@Column(name = "item_name", nullable = false)
+	@NotEmpty(message = "If it exist it has a name.")
 	private String item_name;
 	
 	@Column(name = "item_description")
+	@NotEmpty(message = "We gotta know what the item does.")
 	private String item_description;
 	
 	@Column(name = "weight", nullable = false)
+	@PositiveOrZero
 	private double weight;
 	
 	

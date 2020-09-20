@@ -9,6 +9,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.PositiveOrZero;
 
 import org.springframework.stereotype.Component;
 
@@ -30,9 +32,11 @@ public class Feature implements Serializable {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "feat_id", nullable = false)
+	@PositiveOrZero
 	private int feat_id;
 
 	@Column(name = "feat_name", nullable = false)
+	@NotEmpty(message = "Every class have features whats the name.")
 	private String feat_name;
 	
 	@Column(name = "f_description")

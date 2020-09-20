@@ -9,6 +9,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.validation.constraints.PositiveOrZero;
 
 import org.springframework.stereotype.Component;
 
@@ -29,22 +30,28 @@ public class Currency implements Serializable {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "curr_id", nullable = false)
+	@PositiveOrZero
 	private int curr_id;
 	
 	//default all below to 0
 	@Column(name = "copper", nullable = false)
+	@PositiveOrZero
 	private int copper;
 	
 	@Column(name = "silver", nullable = false)
+	@PositiveOrZero
 	private int silver;
 	
 	@Column(name = "gold", nullable = false)
+	@PositiveOrZero
 	private int gold;
 	
 	@Column(name = "platinum", nullable = false)
+	@PositiveOrZero
 	private int platinum;
 	
 	@Column(name = "total", nullable = false)
+	@PositiveOrZero
 	private double total;
 
 //	public Currency() {

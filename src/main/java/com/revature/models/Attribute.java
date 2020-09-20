@@ -9,6 +9,9 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.PositiveOrZero;
 
 import org.springframework.stereotype.Component;
 
@@ -29,19 +32,24 @@ public class Attribute implements Serializable {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "attrib_id", nullable = false)
+	@PositiveOrZero
 	private int attrib_id;
 	
 	@Column(name = "attrib_name", nullable = false)
+	@NotNull(message = "All attributes have a name!")
 	private String attrib_name;
 	
 	@Column(name = "value", nullable = false)
+	@PositiveOrZero
 	private int value;
 	
 	@Column(name = "modifier", nullable = false)
+	@PositiveOrZero
 	private int modifier;
 	
 	@Column(name = "save", nullable = false)
-	private int save;
+	@PositiveOrZero
+	private int save; //save is an int?
 	
 	
 //	public Attribute() {

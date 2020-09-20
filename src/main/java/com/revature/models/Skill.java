@@ -8,8 +8,12 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.PositiveOrZero;
 
 import org.springframework.stereotype.Component;
 
@@ -30,19 +34,23 @@ private static final long serialVersionUID = 1L;
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	@Column(name = "skill_id", nullable = false)
+	@PositiveOrZero
 	private int skill_id;
 	
 	@Column(name = "skill_name", nullable = false)
+	@NotEmpty(message = "Dude you kicked their but what was that skill called!")
 	private String skill_name;
 	
 	@Column(name = "value", nullable = false)
+	@PositiveOrZero
 	private int value;
 	
 	@Column(name = "proficient", nullable = false)
 	private boolean proficient;
 	
-	//Edit to join etc
 	@ManyToOne
+	@JoinColumn(name = "attrib_id", nullable = false)
+	@NotNull(message = "Not everyone has the same attributes")
 	private Attribute attribute;
 
 	

@@ -9,6 +9,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.validation.constraints.PositiveOrZero;
 
 import org.springframework.stereotype.Component;
 
@@ -29,28 +30,36 @@ public class HitPoints implements Serializable {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "hitp_id", nullable = false)
+	@PositiveOrZero
 	private int hitp_id;
 
 	@Column(name = "currentHP", nullable = false)
+	@PositiveOrZero
 	private int currentHP;
 	
 	@Column(name = "maxHP", nullable = false)
+	@PositiveOrZero
 	private int maxHP;
 	
 	@Column(name = "tempHP", nullable = false)
+	@PositiveOrZero
 	private int tempHP;
 	
 	@Column(name = "currentHD", nullable = false)
+	@PositiveOrZero
 	private int currentHD;
 	
 	@Column(name = "maxHD", nullable = false)
+	@PositiveOrZero
 	private int maxHD;
 	
 	//default below to 0?
 	@Column(name = "deathSuccesses", nullable = false)
+	@PositiveOrZero
 	private int deathSuccesses;
 	
 	@Column(name = "deathFailures", nullable = false)
+	@PositiveOrZero
 	private int deathFailures;
 	
 	

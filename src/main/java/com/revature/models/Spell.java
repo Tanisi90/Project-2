@@ -12,6 +12,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.Table;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.PositiveOrZero;
 
 import org.springframework.stereotype.Component;
 
@@ -32,12 +34,14 @@ private static final long serialVersionUID = 1L;
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	@Column(name = "spell_id", nullable = false)
+	@PositiveOrZero
 	private int spell_id;
 	
 //	@Column(name = "level", nullable = false)
 //	private int level;
 	
 	@Column(name = "spell_name", nullable = false)
+	@NotEmpty(message = "Owww it came out of thin air what was that spell?")
 	private String spell_name;
 	
 //	@Column(name = "school")
