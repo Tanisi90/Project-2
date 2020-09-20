@@ -56,7 +56,7 @@ public class Campaign implements Serializable {
 	
 	
 	@ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-	@JoinColumn(name = "camp_id", nullable = false)
+	@JoinColumn(name = "user_id", referencedColumnName="user_id", insertable=false, updatable=false, nullable = false)
 	@NotEmpty(message = "Every campaign has one DM!") 
 	private User dm;
 	

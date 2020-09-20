@@ -3,8 +3,10 @@ package com.revature.models;
 import java.io.Serializable;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -48,8 +50,8 @@ private static final long serialVersionUID = 1L;
 	@Column(name = "proficient", nullable = false)
 	private boolean proficient;
 	
-	@ManyToOne
-	@JoinColumn(name = "attrib_id", nullable = false)
+	@ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+	@JoinColumn(name = "attrib_id", referencedColumnName="attrib_id", insertable=false, updatable=false, nullable = false)
 	@NotNull(message = "Not everyone has the same attributes")
 	private Attribute attribute;
 

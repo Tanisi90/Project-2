@@ -3,8 +3,10 @@ package com.revature.models;
 import java.io.Serializable;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -45,8 +47,8 @@ public class Attack implements Serializable {
 	@Column (name = "bonus")
 	private int bonus;
 	
-	@ManyToOne
-	@JoinColumn(name = "dice_id", nullable = false)
+	@ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+	@JoinColumn(name = "dice_id", referencedColumnName="dice_id", insertable=false, updatable=false, nullable = false)
 	@NotNull(message = "Gotta roll to get your damage.")
 	private Dice damage;
 

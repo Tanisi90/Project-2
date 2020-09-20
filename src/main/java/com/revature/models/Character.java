@@ -161,27 +161,27 @@ public class Character implements Serializable {
 	private List<String> proficiencies;
 	
 	@ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-	@JoinColumn(name = "class_id", nullable = false)
+	@JoinColumn(name = "class_id", referencedColumnName="class_id", insertable=false, updatable=false,  nullable = false)
 	@NotNull(message = "Everyone belongs somewhere!")
 	private Class class1;
 	
 	@ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-	@JoinColumn(name = "user_id", nullable = false)
+	@JoinColumn(name = "user_id",referencedColumnName= "user_id", insertable=false, updatable=false,  nullable = false)
 	@NotNull(message = "Every player has an ID!")
 	private User player;
 	
 	@ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-	@JoinColumn(name = "camp_id", nullable = false)
+	@JoinColumn(name = "camp_id", referencedColumnName="camp_id", insertable=false, updatable=false, nullable = false)
 	@NotNull(message = "If a campaign is created so was a number.")
 	private Campaign campaign;
 	
 	@ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-	@JoinColumn(name = "race_id", nullable = false)
+	@JoinColumn(name = "race_id", referencedColumnName="race_id", insertable=false, updatable=false, nullable = false)
 	@NotNull(message = "If it exist it has a race.")
 	private Race race;
 	
 	@OneToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-	@JoinColumn(name = "curr_id", nullable = false)
+	@JoinColumn(name = "curr_id", referencedColumnName="curr_id", insertable=false, updatable=false, nullable = false)
 	@NotNull(message = "You started from the bottom now you'll sell.")
 	private Currency currency;
 

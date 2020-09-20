@@ -43,7 +43,6 @@ private static final long serialVersionUID = 1L;
 	@Column(name = "spell_name", nullable = false)
 	@NotEmpty(message = "Owww it came out of thin air what was that spell?")
 	private String spell_name;
-	
 //	@Column(name = "school")
 //	private String school;
 //	
