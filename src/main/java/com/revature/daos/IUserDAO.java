@@ -7,5 +7,5 @@ import com.revature.models.User;
 import lombok.Getter;
 
 public interface IUserDAO extends JpaRepository<User, Integer> {
-	
+	User findByUsername(String username);
 }
