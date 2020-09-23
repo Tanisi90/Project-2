@@ -64,7 +64,7 @@ public class Currency implements Serializable {
 		this.silver = silver;
 		this.gold = gold;
 		this.platinum = platinum;
-		this.total = total;
+		//this.total = total;
 	}
 
 	public Currency(int curr_id, int copper, int silver, int gold, int platinum, double total) {
@@ -74,7 +74,7 @@ public class Currency implements Serializable {
 		this.silver = silver;
 		this.gold = gold;
 		this.platinum = platinum;
-		this.total = total;
+		//this.total = total;
 	}
 
 //	@Override
