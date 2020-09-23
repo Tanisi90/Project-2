@@ -1,6 +1,7 @@
 package com.revature.models;
 
 import java.io.Serializable;
+import java.util.Collection;
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -13,6 +14,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
@@ -124,11 +127,11 @@ public class Character implements Serializable {
 	@NotNull(message = "You must have an attribute.")
 	private List<Attribute> attributes;
 	
-	@ElementCollection
-	@CollectionTable(name = "Collect_Skills", joinColumns = @JoinColumn(name = "char_id"))
+//	@ElementCollection
+//	@CollectionTable(name = "Collect_Skills", joinColumns = @JoinColumn(name = "char_id"))
 	@Column(name = "skills", nullable = false)
 	@NotNull(message = "Combat skills are a must!")
-	private List<Skill> skills;
+	private String skills;
 	
 //	@ElementCollection
 //	@CollectionTable(name = "Collect_Attacks", joinColumns = @JoinColumn(name = "char_id"))
@@ -136,17 +139,17 @@ public class Character implements Serializable {
 //	private List<Attack> attacks;
 	
 	
-	@ElementCollection
-	@CollectionTable(name = "Collect_Spells", joinColumns = @JoinColumn(name = "char_id"))
+//	@ElementCollection
+//	@CollectionTable(name = "Collect_Spells", joinColumns = @JoinColumn(name = "char_id"))
 	@Column(name = "spells")
-	private List<Spell> spells;
+	private String spells;
 	
 	
-	@ElementCollection
-	@CollectionTable(name = "Collect_Equipment", joinColumns = @JoinColumn(name = "char_id"))
+//	@ElementCollection
+//	@CollectionTable(name = "Collect_Equipment", joinColumns = @JoinColumn(name = "char_id"))
 	@Column(name = "equipment", nullable = false)
 	@NotNull(message = "You can't streak in this game!")
-	private List<Item> equipment;
+	private String equipment;
 	
 	@ElementCollection
 	@CollectionTable(name = "Collect_Languages", joinColumns = @JoinColumn(name = "char_id"))
@@ -175,28 +178,55 @@ public class Character implements Serializable {
 	@NotNull(message = "If a campaign is created so was a number.")
 	private Campaign campaign;
 	
-	@ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-	@JoinColumn(name = "race_id", referencedColumnName="race_id", insertable=false, updatable=false, nullable = false)
+//	@ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+//	@JoinColumn(name = "race_id", referencedColumnName="race_id", insertable=false, updatable=false, nullable = false)
+	@Column(name = "race", nullable = false)
 	@NotNull(message = "If it exist it has a race.")
-	private Race race;
+	private String race;
 	
 	@OneToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
 	@JoinColumn(name = "curr_id", referencedColumnName="curr_id", insertable=false, updatable=false, nullable = false)
 	@NotNull(message = "You started from the bottom now you'll sell.")
 	private Currency currency;
 
-
+	
+	@OneToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+	@JoinColumn(name = "hitp_id", referencedColumnName="hitp_id", insertable=false, updatable=false, nullable = false)
+	@NotNull(message = "Every character does some damage.")
+	private HitPoints hitpoints;
+	
+//	@ElementCollection
+	@ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+	@JoinTable(name = "char_features", joinColumns = { @JoinColumn(name = "char_id") }, 
+	        inverseJoinColumns = { @JoinColumn(name = "feat_id")})
+	@NotNull(message = "All characters have features.")
+	private Collection<Feature> char_feature;
+	
 //	public Character() {
-//		super();
-//	}
+//	super();
+//}
 
-
-	public Character(String char_name, String alignment, String char_background, int armorClass, int initiative,
-			int speed, int exp, int profBonus, int currentFirst, int currentSecond, int currentThird, int currentFourth,
-			int currentFifth, int currentSixth, int currentSeventh, int currentEighth, int currentNinth,
-			boolean inspiration, boolean visability, List<Attribute> attributes, List<Skill> skills, List<Spell> spells,
-			List<Item> equipment, List<String> languages, List<String> proficiencies, Class class1, User player,
-			Campaign campaign, Race race) {
+	public Character(
+			@Size(min = 6, max = 30, message = "Your character name must be between 6 and 30 characters.") String char_name,
+			@NotNull(message = "Are you a moral person or naw?") String alignment,
+			@NotNull(message = "I know you come from somewhere!") String char_background,
+			@PositiveOrZero int armorClass, @PositiveOrZero int initiative, @PositiveOrZero int speed,
+			@PositiveOrZero int exp, @PositiveOrZero int profBonus, @PositiveOrZero int currentFirst,
+			@PositiveOrZero int currentSecond, @PositiveOrZero int currentThird, @PositiveOrZero int currentFourth,
+			@PositiveOrZero int currentFifth, @PositiveOrZero int currentSixth, @PositiveOrZero int currentSeventh,
+			@PositiveOrZero int currentEighth, @PositiveOrZero int currentNinth, boolean inspiration,
+			boolean visability, @NotNull(message = "You must have an attribute.") List<Attribute> attributes,
+			@NotNull(message = "Combat skills are a must!") String skills, String spells,
+			@NotNull(message = "You can't streak in this game!") String equipment,
+			@NotNull(message = "Everyone has a language!") List<String> languages,
+			@NotNull(message = "Everyone is good at something!") List<String> proficiencies,
+			@NotNull(message = "Everyone belongs somewhere!") Class class1,
+			@NotNull(message = "Every player has an ID!") User player,
+			@NotNull(message = "If a campaign is created so was a number.") Campaign campaign,
+			@NotNull(message = "If it exist it has a race.") String race,
+			@NotNull(message = "You started from the bottom now you'll sell.") Currency currency,
+			@NotNull(message = "Every character does some damage.") HitPoints hitpoints,
+			@NotNull(message = "All characters have features.") Collection<Feature> char_feature) {
 		super();
 		this.char_name = char_name;
 		this.alignment = alignment;
@@ -227,15 +257,32 @@ public class Character implements Serializable {
 		this.player = player;
 		this.campaign = campaign;
 		this.race = race;
+		this.currency = currency;
+		this.hitpoints = hitpoints;
+		this.char_feature = char_feature;
 	}
 
-
-	public Character(int char_id, String char_name, String alignment, String char_background, int armorClass,
-			int initiative, int speed, int exp, int profBonus, int currentFirst, int currentSecond, int currentThird,
-			int currentFourth, int currentFifth, int currentSixth, int currentSeventh, int currentEighth,
-			int currentNinth, boolean inspiration, boolean visability, List<Attribute> attributes, List<Skill> skills,
-			List<Spell> spells, List<Item> equipment, List<String> languages, List<String> proficiencies, Class class1,
-			User player, Campaign campaign, Race race) {
+	public Character(@PositiveOrZero int char_id,
+			@Size(min = 6, max = 30, message = "Your character name must be between 6 and 30 characters.") String char_name,
+			@NotNull(message = "Are you a moral person or naw?") String alignment,
+			@NotNull(message = "I know you come from somewhere!") String char_background,
+			@PositiveOrZero int armorClass, @PositiveOrZero int initiative, @PositiveOrZero int speed,
+			@PositiveOrZero int exp, @PositiveOrZero int profBonus, @PositiveOrZero int currentFirst,
+			@PositiveOrZero int currentSecond, @PositiveOrZero int currentThird, @PositiveOrZero int currentFourth,
+			@PositiveOrZero int currentFifth, @PositiveOrZero int currentSixth, @PositiveOrZero int currentSeventh,
+			@PositiveOrZero int currentEighth, @PositiveOrZero int currentNinth, boolean inspiration,
+			boolean visability, @NotNull(message = "You must have an attribute.") List<Attribute> attributes,
+			@NotNull(message = "Combat skills are a must!") String skills, String spells,
+			@NotNull(message = "You can't streak in this game!") String equipment,
+			@NotNull(message = "Everyone has a language!") List<String> languages,
+			@NotNull(message = "Everyone is good at something!") List<String> proficiencies,
+			@NotNull(message = "Everyone belongs somewhere!") Class class1,
+			@NotNull(message = "Every player has an ID!") User player,
+			@NotNull(message = "If a campaign is created so was a number.") Campaign campaign,
+			@NotNull(message = "If it exist it has a race.") String race,
+			@NotNull(message = "You started from the bottom now you'll sell.") Currency currency,
+			@NotNull(message = "Every character does some damage.") HitPoints hitpoints,
+			@NotNull(message = "All characters have features.") Collection<Feature> char_feature) {
 		super();
 		this.char_id = char_id;
 		this.char_name = char_name;
@@ -267,9 +314,12 @@ public class Character implements Serializable {
 		this.player = player;
 		this.campaign = campaign;
 		this.race = race;
+		this.currency = currency;
+		this.hitpoints = hitpoints;
+		this.char_feature = char_feature;
 	}
-
-
+	
+	
 //	public int getChar_id() {
 //		return char_id;
 //	}

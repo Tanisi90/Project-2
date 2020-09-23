@@ -84,10 +84,53 @@ public class Class implements Serializable {
 	private int maxNinth;
 	
 	
-	@ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-	@JoinColumn(name = "dice_id", referencedColumnName="dice_id", insertable=false, updatable=false, nullable = false)
+	@Column(name = "hitDice", nullable = false)
 	@NotNull(message = "Gotta roll to know your characters hit points")
-	private Dice hitDice;
+	private String hitDice;
+
+
+	public Class(@NotEmpty(message = "We all belong somewhere") String class_name, @PositiveOrZero int level,
+			@PositiveOrZero int maxFirst, @PositiveOrZero int maxSecond, @PositiveOrZero int maxThird,
+			@PositiveOrZero int maxFourth, @PositiveOrZero int maxFifth, @PositiveOrZero int maxSixth,
+			@PositiveOrZero int maxSeventh, @PositiveOrZero int maxEighth, @PositiveOrZero int maxNinth,
+			@NotNull(message = "Gotta roll to know your characters hit points") String hitDice) {
+		super();
+		this.class_name = class_name;
+		this.level = level;
+		this.maxFirst = maxFirst;
+		this.maxSecond = maxSecond;
+		this.maxThird = maxThird;
+		this.maxFourth = maxFourth;
+		this.maxFifth = maxFifth;
+		this.maxSixth = maxSixth;
+		this.maxSeventh = maxSeventh;
+		this.maxEighth = maxEighth;
+		this.maxNinth = maxNinth;
+		this.hitDice = hitDice;
+	}
+
+
+	public Class(@PositiveOrZero int class_id, @NotEmpty(message = "We all belong somewhere") String class_name,
+			@PositiveOrZero int level, @PositiveOrZero int maxFirst, @PositiveOrZero int maxSecond,
+			@PositiveOrZero int maxThird, @PositiveOrZero int maxFourth, @PositiveOrZero int maxFifth,
+			@PositiveOrZero int maxSixth, @PositiveOrZero int maxSeventh, @PositiveOrZero int maxEighth,
+			@PositiveOrZero int maxNinth,
+			@NotNull(message = "Gotta roll to know your characters hit points") String hitDice) {
+		super();
+		this.class_id = class_id;
+		this.class_name = class_name;
+		this.level = level;
+		this.maxFirst = maxFirst;
+		this.maxSecond = maxSecond;
+		this.maxThird = maxThird;
+		this.maxFourth = maxFourth;
+		this.maxFifth = maxFifth;
+		this.maxSixth = maxSixth;
+		this.maxSeventh = maxSeventh;
+		this.maxEighth = maxEighth;
+		this.maxNinth = maxNinth;
+		this.hitDice = hitDice;
+	}
 	
 	
 //	public Class() {
@@ -95,21 +138,7 @@ public class Class implements Serializable {
 //	}
 
 
-	public Class(String class_name, int level, Dice hitDice) {
-		super();
-		this.class_name = class_name;
-		this.level = level;
-		this.hitDice = hitDice;
-	}
 
-
-	public Class(int class_id, String class_name, int level, Dice hitDice) {
-		super();
-		this.class_id = class_id;
-		this.class_name = class_name;
-		this.level = level;
-		this.hitDice = hitDice;
-	}
 
 //
 //	@Override

@@ -50,9 +50,9 @@ public class Currency implements Serializable {
 	@PositiveOrZero
 	private int platinum;
 	
-	@Column(name = "total", nullable = false)
-	@PositiveOrZero
-	private double total;
+//	@Column(name = "total", nullable = false)
+//	@PositiveOrZero
+//	private double total; // may be able to have this auto calculated
 
 //	public Currency() {
 //		super();
