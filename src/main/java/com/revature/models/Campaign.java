@@ -15,22 +15,10 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
-import javax.validation.constraints.NotEmpty;
-import javax.validation.constraints.NotNull;
-import javax.validation.constraints.PositiveOrZero;
-
-import org.springframework.stereotype.Component;
-
-import lombok.EqualsAndHashCode;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
-import lombok.ToString;
 
 @Entity
 @Table(name = "Campaign")
-@Component
-@Getter @Setter @NoArgsConstructor @EqualsAndHashCode @ToString
+
 public class Campaign implements Serializable {
 
 	private static final long serialVersionUID = 1L;
@@ -38,38 +26,32 @@ public class Campaign implements Serializable {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "camp_id", nullable = false)
-	@PositiveOrZero
 	private int camp_id;
 	
 	@Column(name = "camp_name", nullable = false)
-	@NotEmpty(message = "Every Campaign has a name.")
 	private String camp_name;
 	
 	@Column(name = "camp_description")
 	private String camp_description;
 	
-	@Column(name = "visibility", nullable = false)
-	private boolean visibility;
 	
-	@Column(name = "notes")
-	private String notes;
+	@Column(name = "visability", nullable = false)
+	private boolean visability;
 	
 	
 	@ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-	@JoinColumn(name = "user_id", referencedColumnName="user_id", insertable=false, updatable=false, nullable = false)
-	@NotEmpty(message = "Every campaign has one DM!") 
+	@JoinColumn(name = "camp_id", nullable = false)
 	private User dm;
 	
 	@ElementCollection
 	@CollectionTable(name = "Collect_Players", joinColumns = @JoinColumn(name = "camp_id"))
 	@Column(name = "players", nullable = false)
-	@NotEmpty(message= "If there is game there must be players!")
 	private List<User> players;
 
-//
-//	public Campaign() {
-//		super();
-//	}
+
+	public Campaign() {
+		super();
+	}
 
 	public Campaign(String camp_name, String camp_description, User dm, List<User> players, boolean visability) {
 		super();
@@ -77,7 +59,7 @@ public class Campaign implements Serializable {
 		this.camp_description = camp_description;
 		this.dm = dm;
 		this.players = players;
-		this.visibility = visibility;
+		this.visability = visability;
 	}
 
 	public Campaign(int camp_id, String camp_name, String camp_description, User dm, List<User> players,
@@ -88,63 +70,63 @@ public class Campaign implements Serializable {
 		this.camp_description = camp_description;
 		this.dm = dm;
 		this.players = players;
-		this.visibility = visibility;
+		this.visability = visability;
 	}
 
-//	@Override
-//	public int hashCode() {
-//		final int prime = 31;
-//		int result = 1;
-//		result = prime * result + ((camp_description == null) ? 0 : camp_description.hashCode());
-//		result = prime * result + camp_id;
-//		result = prime * result + ((camp_name == null) ? 0 : camp_name.hashCode());
-//		result = prime * result + ((dm == null) ? 0 : dm.hashCode());
-//		result = prime * result + ((players == null) ? 0 : players.hashCode());
-//		result = prime * result + (visability ? 1231 : 1237);
-//		return result;
-//	}
-//
-//	@Override
-//	public boolean equals(Object obj) {
-//		if (this == obj)
-//			return true;
-//		if (obj == null)
-//			return false;
-//		if (getClass() != obj.getClass())
-//			return false;
-//		Campaign other = (Campaign) obj;
-//		if (camp_description == null) {
-//			if (other.camp_description != null)
-//				return false;
-//		} else if (!camp_description.equals(other.camp_description))
-//			return false;
-//		if (camp_id != other.camp_id)
-//			return false;
-//		if (camp_name == null) {
-//			if (other.camp_name != null)
-//				return false;
-//		} else if (!camp_name.equals(other.camp_name))
-//			return false;
-//		if (dm == null) {
-//			if (other.dm != null)
-//				return false;
-//		} else if (!dm.equals(other.dm))
-//			return false;
-//		if (players == null) {
-//			if (other.players != null)
-//				return false;
-//		} else if (!players.equals(other.players))
-//			return false;
-//		if (visability != other.visability)
-//			return false;
-//		return true;
-//	}
-//
-//	@Override
-//	public String toString() {
-//		return "Campaign [camp_id=" + camp_id + ", camp_name=" + camp_name + ", camp_description=" + camp_description
-//				+ ", dm=" + dm + ", players=" + players + ", visability=" + visability + "]";
-//	}
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((camp_description == null) ? 0 : camp_description.hashCode());
+		result = prime * result + camp_id;
+		result = prime * result + ((camp_name == null) ? 0 : camp_name.hashCode());
+		result = prime * result + ((dm == null) ? 0 : dm.hashCode());
+		result = prime * result + ((players == null) ? 0 : players.hashCode());
+		result = prime * result + (visability ? 1231 : 1237);
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Campaign other = (Campaign) obj;
+		if (camp_description == null) {
+			if (other.camp_description != null)
+				return false;
+		} else if (!camp_description.equals(other.camp_description))
+			return false;
+		if (camp_id != other.camp_id)
+			return false;
+		if (camp_name == null) {
+			if (other.camp_name != null)
+				return false;
+		} else if (!camp_name.equals(other.camp_name))
+			return false;
+		if (dm == null) {
+			if (other.dm != null)
+				return false;
+		} else if (!dm.equals(other.dm))
+			return false;
+		if (players == null) {
+			if (other.players != null)
+				return false;
+		} else if (!players.equals(other.players))
+			return false;
+		if (visability != other.visability)
+			return false;
+		return true;
+	}
+
+	@Override
+	public String toString() {
+		return "Campaign [camp_id=" + camp_id + ", camp_name=" + camp_name + ", camp_description=" + camp_description
+				+ ", dm=" + dm + ", players=" + players + ", visability=" + visability + "]";
+	}
 
 	
 
