@@ -51,9 +51,9 @@ public class UserController {
 	}
 	
 	@PostMapping(value = "/signup")
-	public HttpStatus signup(@Valid @RequestBody User u) {
-		udao.save(u);
-		return HttpStatus.ACCEPTED;
+	public ResponseEntity<User> signup(@Valid @RequestBody User u) {
+		User su = udao.save(u);
+		return ResponseEntity.status(HttpStatus.ACCEPTED).body(su);
 	}
 	
 	@PostMapping(value = "/update")
