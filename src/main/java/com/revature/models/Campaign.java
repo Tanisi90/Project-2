@@ -35,12 +35,12 @@ public class Campaign implements Serializable {
 	private String camp_description;
 	
 	
-	@Column(name = "visability", nullable = false)
-	private boolean visability;
+	@Column(name = "visibility", nullable = false)
+	private boolean visibility;
 	
 	
 	@ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-	@JoinColumn(name = "camp_id", nullable = false)
+	@JoinColumn(name = "user_id", nullable = false)
 	private User dm;
 	
 	@ElementCollection
@@ -59,7 +59,7 @@ public class Campaign implements Serializable {
 		this.camp_description = camp_description;
 		this.dm = dm;
 		this.players = players;
-		this.visability = visability;
+		this.visibility = visability;
 	}
 
 	public Campaign(int camp_id, String camp_name, String camp_description, User dm, List<User> players,
@@ -70,7 +70,7 @@ public class Campaign implements Serializable {
 		this.camp_description = camp_description;
 		this.dm = dm;
 		this.players = players;
-		this.visability = visability;
+		this.visibility = visability;
 	}
 
 	@Override
@@ -82,7 +82,7 @@ public class Campaign implements Serializable {
 		result = prime * result + ((camp_name == null) ? 0 : camp_name.hashCode());
 		result = prime * result + ((dm == null) ? 0 : dm.hashCode());
 		result = prime * result + ((players == null) ? 0 : players.hashCode());
-		result = prime * result + (visability ? 1231 : 1237);
+		result = prime * result + (visibility ? 1231 : 1237);
 		return result;
 	}
 
@@ -117,7 +117,7 @@ public class Campaign implements Serializable {
 				return false;
 		} else if (!players.equals(other.players))
 			return false;
-		if (visability != other.visability)
+		if (visibility != other.visibility)
 			return false;
 		return true;
 	}
@@ -125,7 +125,7 @@ public class Campaign implements Serializable {
 	@Override
 	public String toString() {
 		return "Campaign [camp_id=" + camp_id + ", camp_name=" + camp_name + ", camp_description=" + camp_description
-				+ ", dm=" + dm + ", players=" + players + ", visability=" + visability + "]";
+				+ ", dm=" + dm + ", players=" + players + ", visibility=" + visibility + "]";
 	}
 
 	
