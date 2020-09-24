@@ -38,7 +38,9 @@ public class UserController {
 	}
 	
 	@PostMapping(value = "/login")
-	public ResponseEntity<User> login(@Valid @RequestBody String username, @Valid @RequestBody String password) {
+	public ResponseEntity<User> login(@Valid @RequestBody String[] creds) {
+		String username = creds[0];
+		String password = creds[1];
 		Optional<User> u = Optional.of(udao.findByUsername(username));
 		if(u.isPresent()) {
 			Integer i = password.hashCode() * username.hashCode();
