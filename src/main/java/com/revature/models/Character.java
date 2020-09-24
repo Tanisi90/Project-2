@@ -118,8 +118,8 @@ public class Character implements Serializable {
 	@Column(name = "inspiration", nullable = false)
 	private boolean inspiration;
 	
-	@Column(name = "visability", nullable = false)
-	private boolean visability;
+	@Column(name = "visibility", nullable = false)
+	private boolean visibility;
 	
 	@ElementCollection
 	@CollectionTable(name = "Collect_Attribute", joinColumns = @JoinColumn(name = "char_id"))
@@ -246,7 +246,7 @@ public class Character implements Serializable {
 		this.currentEighth = currentEighth;
 		this.currentNinth = currentNinth;
 		this.inspiration = inspiration;
-		this.visability = visability;
+		this.visibility = visability;
 		this.attributes = attributes;
 		this.skills = skills;
 		this.spells = spells;
@@ -271,7 +271,7 @@ public class Character implements Serializable {
 			@PositiveOrZero int currentSecond, @PositiveOrZero int currentThird, @PositiveOrZero int currentFourth,
 			@PositiveOrZero int currentFifth, @PositiveOrZero int currentSixth, @PositiveOrZero int currentSeventh,
 			@PositiveOrZero int currentEighth, @PositiveOrZero int currentNinth, boolean inspiration,
-			boolean visability, @NotNull(message = "You must have an attribute.") List<Attribute> attributes,
+			boolean visibility, @NotNull(message = "You must have an attribute.") List<Attribute> attributes,
 			@NotNull(message = "Combat skills are a must!") String skills, String spells,
 			@NotNull(message = "You can't streak in this game!") String equipment,
 			@NotNull(message = "Everyone has a language!") List<String> languages,
@@ -303,7 +303,7 @@ public class Character implements Serializable {
 		this.currentEighth = currentEighth;
 		this.currentNinth = currentNinth;
 		this.inspiration = inspiration;
-		this.visability = visability;
+		this.visibility = visibility;
 		this.attributes = attributes;
 		this.skills = skills;
 		this.spells = spells;
