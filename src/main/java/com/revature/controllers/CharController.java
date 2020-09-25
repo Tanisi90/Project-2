@@ -69,6 +69,7 @@ public class CharController {
 	//Might need to change new and update
 	@PostMapping("/new")
 	public HttpStatus newChar(@Valid @RequestBody Character c) {
+		System.out.println(c);
 		cdao.save(c);
 		return HttpStatus.ACCEPTED;
 	}

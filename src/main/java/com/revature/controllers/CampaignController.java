@@ -34,13 +34,16 @@ public class CampaignController {
 	
 	@GetMapping
 	public ResponseEntity<List<Campaign>> findAll(){
-		return ResponseEntity.status(HttpStatus.OK).body(camdao.findAll());
+		List<Campaign> l = camdao.findAll();
+		System.out.println(l);
+		return ResponseEntity.status(HttpStatus.OK).body(l);
 	}
 	
 	@GetMapping("/{id}")
 	public ResponseEntity<Campaign> findById(@Valid @PathVariable("id") int i){
 		Optional<Campaign> cam = camdao.findById(i);
 		if (cam.isPresent()) {
+			System.out.println(cam.get());
 			return ResponseEntity.status(HttpStatus.OK).body(cam.get());
 		}
 		return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(null);
