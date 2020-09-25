@@ -48,6 +48,7 @@ public class CampaignController {
 	
 	@PostMapping("/new")
 	public HttpStatus newCampaign(@Valid @RequestBody Campaign c) {
+		System.out.println(c);
 		camdao.save(c);
 		return HttpStatus.ACCEPTED;
 	}

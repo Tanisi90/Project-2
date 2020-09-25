@@ -16,9 +16,11 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import org.springframework.stereotype.Component;
+
 @Entity
 @Table(name = "Campaign")
-
+@Component
 public class Campaign implements Serializable {
 
 	private static final long serialVersionUID = 1L;
@@ -53,24 +55,24 @@ public class Campaign implements Serializable {
 		super();
 	}
 
-	public Campaign(String camp_name, String camp_description, User dm, List<User> players, boolean visability) {
+	public Campaign(String camp_name, String camp_description, User dm, List<User> players, boolean visibility) {
 		super();
 		this.camp_name = camp_name;
 		this.camp_description = camp_description;
 		this.dm = dm;
 		this.players = players;
-		this.visibility = visability;
+		this.visibility = visibility;
 	}
 
 	public Campaign(int camp_id, String camp_name, String camp_description, User dm, List<User> players,
-			boolean visability) {
+			boolean visibility) {
 		super();
 		this.camp_id = camp_id;
 		this.camp_name = camp_name;
 		this.camp_description = camp_description;
 		this.dm = dm;
 		this.players = players;
-		this.visibility = visability;
+		this.visibility = visibility;
 	}
 
 	@Override
