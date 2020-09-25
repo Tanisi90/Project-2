@@ -169,13 +169,12 @@ public class Character implements Serializable {
 	private Class class1;
 	
 	@ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-	@JoinColumn(name = "user_id",referencedColumnName= "user_id", insertable=false, updatable=false,  nullable = false)
-	@NotNull(message = "Every player has an ID!")
+	@JoinColumn(name = "user_id",referencedColumnName= "user_id", insertable=false, updatable=false)
+	//@NotNull(message = "Every player has an ID!")
 	private User player;
 	
 	@ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-	@JoinColumn(name = "camp_id", referencedColumnName="camp_id", insertable=false, updatable=false, nullable = false)
-	@NotNull(message = "If a campaign is created so was a number.")
+	@JoinColumn(name = "camp_id", referencedColumnName="camp_id", insertable=false, updatable=false)
 	private Campaign campaign;
 	
 //	@ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)

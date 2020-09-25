@@ -1,5 +1,6 @@
 package com.revature.controllers;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -17,7 +18,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.revature.daos.ICampaignDAO;
+import com.revature.daos.IUserDAO;
 import com.revature.models.Campaign;
+import com.revature.models.User;
 
 @CrossOrigin(origins = "*", allowedHeaders = "*")
 @RestController
@@ -25,11 +28,13 @@ import com.revature.models.Campaign;
 public class CampaignController {
 	
 	private ICampaignDAO camdao;
+	private IUserDAO udao;
 	
 	@Autowired
-	public CampaignController(ICampaignDAO camdao) {
+	public CampaignController(ICampaignDAO camdao, IUserDAO udao) {
 		super();
 		this.camdao = camdao;
+		this.udao = udao;
 	}
 	
 	@GetMapping
@@ -52,12 +57,25 @@ public class CampaignController {
 	@PostMapping("/new")
 	public HttpStatus newCampaign(@Valid @RequestBody Campaign c) {
 		System.out.println(c);
+		c.setDm(udao.findById(c.getDm().getUser_id()).get());
+		List<User> u = new ArrayList<User>();
+		for (User temp : c.getPlayers()) {
+			u.add(udao.findById(temp.getUser_id()).get());
+		}
+		c.setPlayers(u);
 		camdao.save(c);
 		return HttpStatus.ACCEPTED;
 	}
 	
 	@PostMapping("/save")
 	public HttpStatus saveCampaign(@Valid @RequestBody Campaign c) {
+
+		c.setDm(udao.findById(c.getDm().getUser_id()).get());
+		List<User> u = new ArrayList<User>();
+		for (User temp : c.getPlayers()) {
+			u.add(udao.findById(temp.getUser_id()).get());
+		}
+		c.setPlayers(u);
 		camdao.save(c);
 		return HttpStatus.ACCEPTED;
 	}

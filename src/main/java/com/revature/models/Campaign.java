@@ -18,6 +18,7 @@ import javax.persistence.Table;
 
 import org.springframework.stereotype.Component;
 
+
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -48,7 +49,7 @@ public class Campaign implements Serializable {
 	private boolean visibility;
 	
 	
-	@ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+	@ManyToOne(fetch = FetchType.EAGER, cascade= {CascadeType.MERGE,CascadeType.PERSIST,CascadeType.REFRESH})
 	@JoinColumn(name = "user_id", nullable = false)
 	private User dm;
 	
