@@ -4,20 +4,19 @@ import java.io.Serializable;
 import java.util.List;
 
 import javax.persistence.CascadeType;
-import javax.persistence.CollectionTable;
 import javax.persistence.Column;
-import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 import org.springframework.stereotype.Component;
-
 
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
@@ -53,9 +52,8 @@ public class Campaign implements Serializable {
 	@JoinColumn(name = "user_id", nullable = false)
 	private User dm;
 	
-	@ElementCollection
-	@CollectionTable(name = "Collect_Players", joinColumns = @JoinColumn(name = "camp_id"))
-	@Column(name = "players", nullable = false)
+	@ManyToMany(fetch = FetchType.LAZY,cascade= {CascadeType.MERGE,CascadeType.PERSIST,CascadeType.REFRESH})
+	@JoinTable(name = "players", joinColumns = {@JoinColumn(name = "camp_id")}, inverseJoinColumns = {@JoinColumn(name="user_id")})
 	private List<User> players;
 
 

@@ -2,19 +2,17 @@ package com.revature.models;
 
 import java.io.Serializable;
 import java.util.List;
+import java.util.Set;
 
-import javax.persistence.CollectionTable;
 import javax.persistence.Column;
-import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
+import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.PositiveOrZero;
 
@@ -60,6 +58,9 @@ private static final long serialVersionUID = 1L;
 	@Column(name = "email", nullable = false)
 	@Email
 	private String email;
+	
+	@ManyToMany(mappedBy="players")
+	private Set<Campaign> camps;
 	
 	
 //	public User() {
