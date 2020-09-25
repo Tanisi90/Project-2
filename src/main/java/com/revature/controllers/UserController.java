@@ -79,5 +79,12 @@ public class UserController {
 		return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(null);
 	}
 	
-	
+	@PostMapping(value = "/lookup")
+	public ResponseEntity<User> findByUsername(@Valid @RequestBody String username) {
+		User u = udao.findByUsername(username);
+		if(u != null) {
+			return ResponseEntity.status(HttpStatus.OK).body(u);
+		}
+		return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(null);
+	}
 }
