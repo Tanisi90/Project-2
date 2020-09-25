@@ -62,7 +62,7 @@ private static final long serialVersionUID = 1L;
 	private String email;
 	
 	//Nullable = true bc might not be a DM or have character made.
-	//Also might check how we're setting up roles.
+//	//Also might check how we're setting up roles.
 	@ElementCollection
 	@CollectionTable(name = "Collect_Roles", joinColumns = @JoinColumn(name = "user_id"))
 	@Column(name = "roles")
@@ -74,15 +74,14 @@ private static final long serialVersionUID = 1L;
 //	}
 
 
-	public User(String username, String password, String first_name, String last_name, String email,
-			List<String> roles) {
+	public User(String username, String password, String first_name, String last_name, String email) {
 		super();
 		this.username = username;
 		this.password = password;
 		this.first_name = first_name;
 		this.last_name = last_name;
 		this.email = email;
-		this.roles = roles;
+//		this.roles = roles;
 	}
 
 

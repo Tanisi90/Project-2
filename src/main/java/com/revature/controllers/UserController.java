@@ -41,6 +41,7 @@ public class UserController {
 	public ResponseEntity<User> login(@Valid @RequestBody String[] creds) {
 		String username = creds[0];
 		String password = creds[1];
+		//System.out.printf(username + "" + password);
 		Optional<User> u = Optional.of(udao.findByUsername(username));
 		if(u.isPresent()) {
 			Integer i = password.hashCode() * username.hashCode();
@@ -54,12 +55,17 @@ public class UserController {
 	
 	@PostMapping(value = "/signup")
 	public ResponseEntity<User> signup(@Valid @RequestBody User u) {
+		//System.out.println(u);
+		Integer i = u.getPassword().hashCode() * u.getUsername().hashCode();
+		u.setPassword(i.toString());
 		User su = udao.save(u);
 		return ResponseEntity.status(HttpStatus.ACCEPTED).body(su);
 	}
 	
 	@PostMapping(value = "/update")
 	public HttpStatus updateUser(@Valid @RequestBody User u) {
+		Integer i = u.getPassword().hashCode() * u.getUsername().hashCode();
+		u.setPassword(i.toString());
 		udao.save(u);
 		return HttpStatus.ACCEPTED;
 	}
